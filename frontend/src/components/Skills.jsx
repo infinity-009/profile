@@ -94,7 +94,7 @@ const SkillCard = ({ category, index }) => {
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-32 relative overflow-hidden">
+    <section id="skills" className="py-16 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-950 to-black"></div>
       

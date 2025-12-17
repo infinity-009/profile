@@ -94,17 +94,16 @@ export const projects = [
 
 export const profile = {
   name: "Mallikarjun Reddy",
-  role: "AI Engineer",
-  about: "I specialize in building robust, production-ready AI solutions. From Generative AI and Computer Vision to Data Engineering and Automation, I leverage cutting-edge technologies to solve complex real-world problems.",
+  role: "AI/ML Engineer",
+  about: "AI/ML Engineer with proven expertise in Natural Language Processing, Computer Vision, Generative AI, and Data Engineering. Experienced in delivering enterprise-grade conversational AI platforms, RAG systems, Text-to-SQL agents, and ATS solutions.",
   contact: {
     email: "hello@mallikarjunreddy.com",
-    alternate: "reddyvarimallikarjunreddy@gmail.com",
     phone: "8688715349",
     github: "https://github.com/infinity-009",
     linkedin: "https://www.linkedin.com/in/infinity09/", 
     website: "https://www.mallikarjunreddy.com"
   },
   skills: [
-    "Python", "TensorFlow", "PyTorch", "FastAPI", "React", "Docker", "Kubernetes", "AWS", "GCP", "LLMs", "RAG", "Computer Vision", "NLP", "Apache Spark", "PostgreSQL", "ONNX Runtime", "Gemini", "OpenCV", "Streamlit"
+    "Python", "PyTorch", "TensorFlow", "FastAPI", "LangChain", "React", "Docker", "Kubernetes", "AWS", "GCP", "Azure", "LLMs", "RAG", "Computer Vision", "NLP", "Kafka", "PySpark", "PostgreSQL", "ONNX Runtime", "Gemini", "OpenCV", "YOLO", "vLLM"
   ]
 };
