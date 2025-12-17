@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Sun, Moon } from 'lucide-react';
+import { profile } from '../data/projects';
+import { useTheme } from '../context/ThemeContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   const links = [
     { name: 'Home', href: '#home' },
@@ -37,7 +40,53 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="md:hidden">
+          {/* Social icons + Theme toggle */}
+          <div className="hidden md:flex items-center gap-2">
+            <a
+              href={profile.contact.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg text-gray-500 hover:text-gray-300 hover:bg-white/5 transition-all"
+              title="GitHub"
+            >
+              <Github className="w-5 h-5" />
+            </a>
+            <a
+              href={profile.contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg text-gray-500 hover:text-gray-300 hover:bg-white/5 transition-all"
+              title="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <div className="w-px h-6 bg-white/10 mx-2"></div>
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-gray-500 hover:text-gray-300 hover:bg-white/5 transition-all"
+              title={isDark ? "Light mode" : "Dark mode"}
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+          </div>
+
+          <div className="md:hidden flex items-center gap-2">
+            <a
+              href={profile.contact.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg text-gray-500 hover:text-gray-300 transition-all"
+            >
+              <Github className="w-5 h-5" />
+            </a>
+            <a
+              href={profile.contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg text-gray-500 hover:text-gray-300 transition-all"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-300 hover:text-white p-2"

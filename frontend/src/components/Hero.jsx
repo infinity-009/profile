@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDownRight, Sparkles, Cpu, Eye, Database, Bot, Zap } from 'lucide-react';
+import { ArrowDownRight, Sparkles, Cpu, Eye, Database, Bot, Zap, Github, Linkedin } from 'lucide-react';
 import { profile } from '../data/projects';
 import NeuralBackground from './NeuralBackground';
 
@@ -32,73 +32,102 @@ const Hero = () => {
           
           {/* Left content - 7 cols */}
           <div className="lg:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-6"
-            >
-              {/* Status badge */}
-              <motion.div 
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-sm"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+            {/* Blurred background card for readability */}
+            <div className="relative">
+              <div className="absolute -inset-4 bg-black/40 backdrop-blur-md rounded-3xl"></div>
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className="relative space-y-6 p-4"
               >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <span className="text-emerald-300 text-sm font-medium">Open to opportunities</span>
-              </motion.div>
-
-              {/* Main intro */}
-              <div className="flex items-center gap-6">
+                {/* Status badge */}
                 <motion.div 
-                  className="relative"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3, type: 'spring' }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-sm"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
                 >
-                  <div className="w-28 h-28 rounded-2xl overflow-hidden border-2 border-cyan-400/50 shadow-[0_0_40px_rgba(34,211,238,0.4)]">
-                    <img src="/images/profile.png" alt={profile.name} className="w-full h-full object-cover" />
-                  </div>
-                  <div className="absolute -bottom-2 -right-2 p-2 rounded-xl bg-slate-900/90 border border-cyan-500/30 backdrop-blur">
-                    <Sparkles className="w-4 h-4 text-amber-400" />
-                  </div>
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <span className="text-emerald-300 text-sm font-medium">Open to opportunities</span>
                 </motion.div>
-                
-                <div>
-                  <motion.p 
-                    className="text-cyan-400 text-sm font-semibold tracking-wider uppercase"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    {profile.role}
-                  </motion.p>
-                  <motion.h1 
-                    className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    {profile.name}
-                  </motion.h1>
-                </div>
-              </div>
 
-              {/* Description */}
-              <motion.p 
-                className="text-lg text-gray-300 leading-relaxed max-w-xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-              >
-                Building production-grade AI systems that bridge the gap between research and real-world impact. 
-                Specialized in <span className="text-cyan-400">Generative AI</span>, <span className="text-emerald-400">Computer Vision</span>, 
-                and <span className="text-amber-400">scalable data pipelines</span>.
-              </motion.p>
+                {/* Main intro */}
+                <div className="flex items-center gap-6">
+                  <motion.div 
+                    className="relative"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.3, type: 'spring' }}
+                  >
+                    <div className="w-28 h-28 rounded-2xl overflow-hidden border-2 border-cyan-400/50 shadow-[0_0_40px_rgba(34,211,238,0.4)]">
+                      <img src="/images/profile.png" alt={profile.name} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="absolute -bottom-2 -right-2 p-2 rounded-xl bg-slate-900/90 border border-cyan-500/30 backdrop-blur">
+                      <Sparkles className="w-4 h-4 text-amber-400" />
+                    </div>
+                  </motion.div>
+                  
+                  <div>
+                    <motion.p 
+                      className="text-cyan-400 text-sm font-semibold tracking-wider uppercase"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                    >
+                      {profile.role}
+                    </motion.p>
+                    <motion.h1 
+                      className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      {profile.name}
+                    </motion.h1>
+                    {/* Social links in hero */}
+                    <motion.div 
+                      className="flex items-center gap-3 mt-3"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.55 }}
+                    >
+                      <a
+                        href={profile.contact.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+                        title="GitHub"
+                      >
+                        <Github className="w-5 h-5" />
+                      </a>
+                      <a
+                        href={profile.contact.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+                        title="LinkedIn"
+                      >
+                        <Linkedin className="w-5 h-5" />
+                      </a>
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <motion.p 
+                  className="text-lg text-gray-300 leading-relaxed max-w-xl"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  Building production-grade AI systems that bridge the gap between research and real-world impact. 
+                  Specialized in <span className="text-cyan-400">Generative AI</span>, <span className="text-emerald-400">Computer Vision</span>, 
+                  and <span className="text-amber-400">scalable data pipelines</span>.
+                </motion.p>
 
               {/* CTA buttons */}
               <motion.div 
@@ -121,7 +150,8 @@ const Hero = () => {
                   Let's Connect
                 </a>
               </motion.div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
 
           {/* Right content - 5 cols - Capabilities Grid */}
