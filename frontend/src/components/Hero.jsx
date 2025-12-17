@@ -64,7 +64,7 @@ const Hero = () => {
                     transition={{ delay: 0.3, type: 'spring' }}
                   >
                     <div className="w-28 h-28 rounded-2xl overflow-hidden border-2 border-cyan-400/50 shadow-[0_0_40px_rgba(34,211,238,0.4)]">
-                      <img src="/profile/images/profile.png" alt={profile.name} className="w-full h-full object-cover" />
+                      <img src="/images/profile.png" alt={profile.name} className="w-full h-full object-cover" />
                     </div>
                     <div className="absolute -bottom-2 -right-2 p-2 rounded-xl bg-slate-900/90 border border-cyan-500/30 backdrop-blur">
                       <Sparkles className="w-4 h-4 text-amber-400" />

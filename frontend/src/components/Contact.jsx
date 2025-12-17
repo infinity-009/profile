@@ -61,7 +61,7 @@ const Contact = () => {
         transition={{ duration: 10, repeat: Infinity }}
       />
       
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-10">
           <motion.span 
@@ -98,7 +98,7 @@ const Contact = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-3"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto"
         >
           {contactItems.map((item, index) => {
             const Icon = item.icon;
@@ -114,18 +114,18 @@ const Contact = () => {
               >
                 <div className={`absolute -inset-[1px] bg-gradient-to-r ${item.color} rounded-xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-300`}></div>
                 
-                <div className="relative flex items-center gap-3 p-4 bg-slate-900/80 border border-white/10 rounded-xl group-hover:border-transparent transition-all backdrop-blur-xl">
+                <div className="relative flex items-center gap-3 p-4 bg-slate-900/80 border border-white/10 rounded-xl group-hover:border-transparent transition-all backdrop-blur-xl h-full">
                   <a 
                     href={item.href}
                     target={item.icon === Globe ? "_blank" : undefined}
                     rel={item.icon === Globe ? "noopener noreferrer" : undefined}
-                    className={`p-2.5 rounded-lg bg-gradient-to-br ${item.color} hover:scale-110 transition-transform`}
+                    className={`p-2.5 rounded-lg bg-gradient-to-br ${item.color} hover:scale-110 transition-transform flex-shrink-0`}
                   >
                     <Icon className="w-4 h-4 text-white" />
                   </a>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs text-gray-500">{item.label}</p>
-                    <p className="text-white text-sm font-medium truncate">
+                    <p className="text-white text-sm font-medium break-words">
                       {item.value}
                     </p>
                   </div>
