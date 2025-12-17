@@ -98,7 +98,7 @@ const Contact = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto"
         >
           {contactItems.map((item, index) => {
             const Icon = item.icon;
@@ -125,7 +125,7 @@ const Contact = () => {
                   </a>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs text-gray-500">{item.label}</p>
-                    <p className="text-white text-sm font-medium break-words">
+                    <p className="text-white text-sm font-medium whitespace-nowrap overflow-hidden text-ellipsis">
                       {item.value}
                     </p>
                   </div>
