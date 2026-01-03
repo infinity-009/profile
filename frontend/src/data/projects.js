@@ -1,5 +1,12 @@
 export const projects = [
   {
+    title: "3D Avatar Motion Capture",
+    description: "Real-time 3D avatar that mirrors your movements using your webcam with full body, hand, and face tracking.",
+    tech: ["MediaPipe", "Three.js", "WebGL", "Face Mesh", "Hand Tracking"],
+    category: "Computer Vision",
+    link: "/edge_ai"
+  },
+  {
     title: "Enterprise AI Chatbot",
     description: "A next-generation company assistant featuring hybrid search capabilities, real-time voice interaction, and a modern web interface.",
     tech: ["Gemini 2.0 Flash", "Llama 3.1", "FastRTC", "Python", "Hybrid Search"],

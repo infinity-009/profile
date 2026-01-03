@@ -144,7 +144,7 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Technical <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Arsenal</span>
+            Skills & <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Technologies</span>
           </motion.h2>
           
           <motion.p 
@@ -153,7 +153,7 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Technologies and frameworks I leverage to architect and deploy cutting-edge AI systems.
+            Technologies and frameworks I work with to build AI systems.
           </motion.p>
         </div>
 
