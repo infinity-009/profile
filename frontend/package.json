@@ -10,7 +10,7 @@
     "build:combined": "npm run build && npm --prefix ../../../system_design run build && node scripts/include-system-design.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build:combined && gh-pages -d dist"
+    "deploy": "npm run build:combined && gh-pages -d dist --dotfiles"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
