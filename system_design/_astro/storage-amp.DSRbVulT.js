@@ -1,0 +1,31 @@
+import{D as z,d as L,e as C,w as y,s as F,r as R}from"./storage.COEjocsp.js";import{readout as b,onThemeChange as E,palette as O,fitCanvas as H,label as p,spreadLabels as N}from"./rig.COt8Za58.js";const w=720,T=268,f=0,B=[{key:"writeAmp",title:"write amp",x:104,w:118,log:!0},{key:"pointReadAmp",title:"point read",x:240,w:96,log:!1},{key:"rangeReadAmp",title:"range scan",x:354,w:118,log:!0},{key:"spaceAmp",title:"space amp",x:490,w:96,log:!1}],x=604,S=62,A=52;class X extends HTMLElement{connectedCallback(){this.dev=this.getAttribute("device")||"nvme",this.entryBytes=Number(this.getAttribute("row")||128),this.pageBytes=Number(this.getAttribute("page")||8192),this.T=Number(this.getAttribute("ratio")||10),this.innerHTML=`
+      <div class="panel">
+        <canvas role="img"></canvas>
+        <div class="readouts"></div>
+        <p class="verdict"></p>
+        <div class="controls">
+          ${z.map(s=>`<button data-dev="${s.id}" aria-pressed="false">${s.name}</button>`).join("")}
+        </div>
+        <div class="controls">
+          <label>
+            row size
+            <input type="range" data-k="row" min="6" max="13" step="1"
+                   value="${Math.round(Math.log2(this.entryBytes))}"
+                   aria-label="Row size in bytes, as a power of two">
+            <output class="num" data-o="row"></output>
+          </label>
+          <label>
+            page size
+            <input type="range" data-k="page" min="12" max="15" step="1"
+                   value="${Math.round(Math.log2(this.pageBytes))}"
+                   aria-label="B-tree page size in bytes, as a power of two">
+            <output class="num" data-o="page"></output>
+          </label>
+          <label>
+            size ratio T
+            <input type="range" data-k="T" min="2" max="30" step="1" value="${this.T}"
+                   aria-label="LSM level size ratio">
+            <output class="num" data-o="T"></output>
+          </label>
+        </div>
+      </div>`,this.canvas=this.querySelector("canvas"),this.canvas.setAttribute("aria-label","Three storage engines compared on write amplification, point-read amplification, range-scan amplification and space amplification, plus resulting write throughput on the selected device.");const t=this.querySelector(".readouts");this.ro={seq:b(t,"seq advantage"),winner:b(t,"fastest writes"),margin:b(t,"its margin"),levels:b(t,"LSM levels"),scan:b(t,"fastest scans")},this.verdict=this.querySelector(".verdict");for(const s of this.querySelectorAll("[data-dev]"))s.addEventListener("click",()=>{this.dev=s.dataset.dev,this.draw()});const e=new Map,n=s=>this.querySelector(`[data-k="${s}"]`),o=(s,i)=>n(s).addEventListener("input",()=>{clearTimeout(e.get(s)),e.set(s,setTimeout(()=>{i(Number(n(s).value)),this.draw()},30))});o("row",s=>this.entryBytes=2**s),o("page",s=>this.pageBytes=2**s),o("T",s=>this.T=s),E(()=>this.draw()),this.obs=new ResizeObserver(()=>this.draw()),this.obs.observe(this),this.draw()}disconnectedCallback(){this.obs?.disconnect()}draw(){const t=O(this),e=H(this.canvas,w,T);e.clearRect(0,0,w,T);for(const a of this.querySelectorAll("[data-dev]")){const c=a.dataset.dev===this.dev;a.setAttribute("aria-pressed",String(c)),a.style.borderColor=c?"var(--amber)":"",a.style.color=c?"var(--amber)":""}const n=a=>a>=1024?`${a/1024}K`:`${a}B`;this.querySelector('[data-o="row"]').textContent=n(this.entryBytes),this.querySelector('[data-o="page"]').textContent=n(this.pageBytes),this.querySelector('[data-o="T"]').textContent=String(this.T);const o=L(this.dev),s=C({rows:1e9,entryBytes:this.entryBytes,pageBytes:this.pageBytes,T:this.T}),i=s.list,m={entryBytes:this.entryBytes,pageBytes:this.pageBytes};for(const a of B)p(e,a.title+(a.log?" (log)":""),a.x,30,t["ink-soft"],{size:9});p(e,`writes/s on ${o.name}`,x,30,t.amber,{size:9}),i.forEach((a,c)=>{const l=S+c*A;p(e,a.name,f,l+10,t.ink,{size:10,caps:!1}),p(e,a.sequential?"sequential":"random pages",f,l+24,t.slate,{size:8});for(const h of B){const M=i.map(q=>q[h.key]),$=Math.max(...M),d=a[h.key],k=h.log?Math.log(d)/Math.log(Math.max($,1.0001)):d/$,v=d===Math.min(...M);e.save(),e.fillStyle=v?t.teal:t.amber,e.globalAlpha=v?.85:.45,e.fillRect(h.x,l,Math.max(k*h.w,1.5),13),e.restore(),p(e,d>=100?`${Math.round(d)}×`:d>=10?`${d.toFixed(0)}×`:`${d.toFixed(2)}×`,h.x,l+24,v?t.teal:t["ink-soft"],{size:9})}const r=y(a,o,m);p(e,this.rate(r),x,l+10,t.amber,{size:11}),p(e,"rows/s",x,l+24,t.slate,{size:8})});const u=F(o,this.pageBytes),g=S+i.length*A+16;e.save(),e.strokeStyle=t.rule,e.lineWidth=1,e.beginPath(),e.moveTo(f,g),e.lineTo(w,g),e.stroke(),e.restore(),N(e,[{x:160,text:`${o.name}: sequential is ${u>=10?Math.round(u):u.toFixed(1)}× random`,colour:u>10?t.crimson:t.teal},{x:560,text:o.note.slice(0,46),colour:t.slate}],{y:g+14,minGap:14,size:8,minX:0,maxX:w}),this.report(t,{list:i,dev:o,model:s,opts:m,adv:u})}rate(t){return t>=1e6?`${(t/1e6).toFixed(1)}M`:t>=1e3?`${(t/1e3).toFixed(0)}k`:Math.round(t).toString()}report(t,{list:e,dev:n,model:o,opts:s,adv:i}){const m=e.map(r=>({e:r,t:y(r,n,s)})).sort((r,h)=>h.t-r.t),u=e.map(r=>({e:r,t:R(r,n,{range:!0})})).sort((r,h)=>h.t-r.t),g=e.find(r=>r.id==="btree"),a=e.find(r=>r.id==="leveled"),c=m[0].t/m[1].t,l=y(a,n,s)/y(g,n,s);this.ro.seq.set(i>=10?`${Math.round(i)}×`:`${i.toFixed(1)}×`,i>10?"bad":"ok"),this.ro.winner.set(m[0].e.name),this.ro.margin.set(`${c.toFixed(1)}× next`,c>5?"bad":"ok"),this.ro.levels.set(String(o.levels)),this.ro.scan.set(u[0].e.name),this.verdict.innerHTML=`A ${this.entryBytes}-byte row on a ${this.pageBytes/1024} KB page. The B-tree rewrites <b>${Math.round(g.writeAmp)}×</b> the bytes you asked it to; the levelled LSM rewrites <b>${Math.round(a.writeAmp)}×</b>. Those are the <i>same order of magnitude</i> — the LSM's advantage is not fewer bytes, it is <b>sequential</b> bytes. On ${n.name} sequential is ${i>=10?Math.round(i):i.toFixed(1)}× random, so the LSM writes <b>${l>=10?Math.round(l):l.toFixed(1)}×</b> faster than the B-tree here. `+(i>10?"This is the hardware LSM trees were designed for, and the reason they exist.":`On flash the bandwidth argument is gone; what is left is 3× fewer bytes and far less write wear. Meanwhile the B-tree still scans <b>${Math.round(a.rangeReadAmp)}×</b> cheaper, which is why both designs are still shipping.`)}}customElements.define("storage-amp",X);

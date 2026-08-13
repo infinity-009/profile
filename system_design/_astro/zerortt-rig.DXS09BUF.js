@@ -1,0 +1,38 @@
+import{b as A}from"./tlswire.DUODUWBl.js";import"./congestion.01bs7TQx.js";import"./kernel.DrC0sNW-.js";import"./handshake.C9Kv9N2Y.js";import"./latency-table.Z10ZPnGR.js";function f({mode:e,keyType:i="ecdsa-p256",intermediates:r=2,sanCount:o=2}={}){const s=e==="full"?A({keyType:i,intermediates:r,sanCount:o}).roundTrips-1:0,n={full:2,resumedNo0rtt:2,zeroRtt:1}[e];if(n===void 0)throw new Error("mode must be full, resumedNo0rtt, or zeroRtt");return{roundTrips:n+s,certFlightExtraRoundTrips:s}}function N({rttMs:e,keyType:i="ecdsa-p256",intermediates:r=2,sanCount:o=2}={}){const s=f({mode:"full",keyType:i,intermediates:r,sanCount:o}),n=f({mode:"zeroRtt",keyType:i,intermediates:r,sanCount:o});return{fullRoundTrips:s.roundTrips,zeroRttRoundTrips:n.roundTrips,roundTripsSaved:s.roundTrips-n.roundTrips,msSaved:(s.roundTrips-n.roundTrips)*e}}function P({ticketLifetimeSeconds:e,rttMs:i}){const r=e*1e3;return Math.floor(r/i)}function F({zeroRttPerSecond:e,ticketLifetimeSeconds:i,bytesPerEntry:r=48}){return e*i*r}const _=720,D=380,l=130,W=40,z=_-l-W,I=14,b=34,u=30,S=14,j=4,E=b+3*(u+S)+40,M=E+30,C=34,U="http://www.w3.org/2000/svg",d=(e,i={},r)=>{const o=document.createElementNS(U,e);for(const[s,n]of Object.entries(i))o.setAttribute(s,String(n));return r!==void 0&&(o.textContent=r),o},w=e=>e<1e3?`${Math.round(e)} ms`:`${(e/1e3).toFixed(1)} s`,x=e=>e>=1e9?`${(e/1e9).toFixed(1)} GB`:e>=1e6?`${(e/1e6).toFixed(1)} MB`:e>=1e3?`${(e/1e3).toFixed(0)} kB`:`${Math.round(e)} B`,v=e=>Math.round(e).toLocaleString("en-US");class G extends HTMLElement{connectedCallback(){this.rttOf=t=>1*Math.pow(500,t/40),this.zrsOf=t=>Math.round(1*Math.pow(5e4,t/40));const i=25,r=23;this.keyType="ecdsa-p256",this.intermediates=2,this.rttMs=this.rttOf(i),this.zeroRttPerSecond=this.zrsOf(r),this.ticketLifetimeHours=24,this.innerHTML=`
+      <div class="panel">
+        <svg viewBox="0 0 ${_} ${D}" role="img" width="100%"
+             aria-label="Top: three timelines of round-trip blocks, one per handshake mode. Bottom: a bar showing the memory a server-side replay-dedup cache needs, driven by 0-RTT rate and ticket lifetime."></svg>
+        <div class="readouts"></div>
+        <p class="verdict"></p>
+        <div class="controls">
+          ${["ecdsa-p256","rsa-2048","rsa-4096"].map(t=>`<button data-key="${t}">${t}</button>`).join("")}
+        </div>
+        <div class="controls">
+          <label>
+            intermediates
+            <input type="range" data-s="int" min="0" max="9" step="1" value="2"
+                   aria-label="Number of intermediate certificates in the chain">
+            <output class="num" data-o="int"></output>
+          </label>
+          <label>
+            round trip time
+            <input type="range" data-s="rtt" min="0" max="40" step="1" value="25"
+                   aria-label="Round trip time in milliseconds, on a log scale from 1ms to 500ms">
+            <output class="num" data-o="rtt"></output>
+          </label>
+        </div>
+        <div class="controls">
+          <label>
+            0-RTT handshakes/s
+            <input type="range" data-s="zrs" min="0" max="40" step="1" value="23"
+                   aria-label="0-RTT handshakes per second, on a log scale from 1 to 50,000">
+            <output class="num" data-o="zrs"></output>
+          </label>
+          <label>
+            ticket lifetime
+            <input type="range" data-s="tl" min="1" max="168" step="1" value="24"
+                   aria-label="Session ticket lifetime in hours">
+            <output class="num" data-o="tl"></output>
+          </label>
+        </div>
+      </div>`,this.svg=this.querySelector("svg");const o=this.querySelector(".readouts");this.ro={};for(const t of["full handshake","0-RTT","saved","replay attempts possible","dedup cache needed"]){const a=document.createElement("div");a.className="ro",a.innerHTML=`<span class="k">${t}</span><span class="v">—</span>`,o.appendChild(a),this.ro[t]=a}this.verdict=this.querySelector(".verdict");for(const t of this.querySelectorAll("[data-key]"))t.addEventListener("click",()=>{this.keyType=t.dataset.key,this.draw()});const s=t=>this.querySelector(`[data-s="${t}"]`),n=(t,a)=>{s(t).addEventListener("input",()=>{a(Number(s(t).value)),this.labels()}),s(t).addEventListener("change",()=>{a(Number(s(t).value)),this.draw()})};s("int").addEventListener("input",()=>{this.intermediates=Number(s("int").value),this.labels()}),s("int").addEventListener("change",()=>{this.intermediates=Number(s("int").value),this.draw()}),n("rtt",t=>this.rttMs=this.rttOf(t)),n("zrs",t=>this.zeroRttPerSecond=this.zrsOf(t)),s("tl").addEventListener("input",()=>{this.ticketLifetimeHours=Number(s("tl").value),this.labels()}),s("tl").addEventListener("change",()=>{this.ticketLifetimeHours=Number(s("tl").value),this.draw()}),this.labels(),this.draw()}labels(){this.querySelector('[data-o="int"]').textContent=this.intermediates,this.querySelector('[data-o="rtt"]').textContent=w(this.rttMs),this.querySelector('[data-o="zrs"]').textContent=`${v(this.zeroRttPerSecond)}/s`,this.querySelector('[data-o="tl"]').textContent=`${this.ticketLifetimeHours} h`}draw(){const i=this.svg;for(;i.firstChild;)i.removeChild(i.firstChild);const r={keyType:this.keyType,intermediates:this.intermediates},o=f({mode:"full",...r}),s=f({mode:"resumedNo0rtt",...r}),n=f({mode:"zeroRtt",...r}),t=N({rttMs:this.rttMs,...r});i.appendChild(d("text",{x:0,y:I,fill:"var(--ink)","font-size":12,"font-weight":600},"round trips before the server sees usable application data"));const a=Math.max(o.roundTrips,s.roundTrips,n.roundTrips,j),R=z/a,y=(m,c,H,O)=>{for(let g=0;g<c;g++)i.appendChild(d("rect",{x:l+g*R,y:m,width:R-3,height:u,fill:O}));i.appendChild(d("text",{x:l-8,y:m+u/2+4,fill:"var(--ink-soft)","font-size":10,"text-anchor":"end"},H)),i.appendChild(d("text",{x:l+c*R+6,y:m+u/2+4,fill:"var(--ink-soft)","font-size":10},`${c} RTT${c===1?"":"s"}`))};y(b,o.roundTrips,"full handshake","var(--slate)"),y(b+(u+S),s.roundTrips,"resumed, no 0-RTT","var(--amber)"),y(b+2*(u+S),n.roundTrips,"0-RTT","var(--teal)");const h=F({zeroRttPerSecond:this.zeroRttPerSecond,ticketLifetimeSeconds:this.ticketLifetimeHours*3600}),$=P({ticketLifetimeSeconds:this.ticketLifetimeHours*3600,rttMs:this.rttMs});i.appendChild(d("text",{x:0,y:E,fill:"var(--ink)","font-size":12,"font-weight":600},"replay-dedup cache needed to make 0-RTT safe for non-idempotent requests"));const B=Math.max(h,1e6)*1.15,q=z/B,T=h*q;i.appendChild(d("rect",{x:l,y:M,width:Math.max(.5,T),height:C,fill:"var(--crimson)"}));const L=x(h),k=T>L.length*6.2+12;i.appendChild(d("text",{x:k?l+T/2:l+T+6,y:M+C/2+4,fill:k?"var(--paper)":"var(--ink-soft)","font-size":10,"font-weight":600,"text-anchor":k?"middle":"start"},L));const p=(m,c)=>this.ro[m].querySelector(".v").textContent=c;p("full handshake",`${o.roundTrips} RTT`),p("0-RTT",`${n.roundTrips} RTT`),p("saved",`${t.roundTripsSaved} RTT (${w(t.msSaved)})`),p("replay attempts possible",v($)),p("dedup cache needed",x(h)),this.verdict.textContent=`At ${this.intermediates} intermediate ${this.keyType} certificate${this.intermediates===1?"":"s"}, a full handshake needs ${o.roundTrips} round trips before the server sees application data; resumption without 0-RTT needs the same ${s.roundTrips} — no savings. 0-RTT needs just ${n.roundTrips}, saving ${w(t.msSaved)} at this RTT. That saved round trip is replayable for as long as the ticket is valid: at ${this.ticketLifetimeHours}h, up to ${v($)} replay attempts fit in the window. Making 0-RTT safe for non-idempotent requests at ${v(this.zeroRttPerSecond)}/s needs a ${x(h)} dedup cache — restricting 0-RTT to idempotent requests needs none.`}}customElements.define("zerortt-rig",G);

@@ -1,0 +1,29 @@
+import{e as A,o as N}from"./binary-schema-encodings.BQBQn9iz.js";import"./wire.BQiRfSTa.js";import"./kernel.DrC0sNW-.js";import"./latency-table.Z10ZPnGR.js";const S=720,B=300,h=170,F=70,O=S-h-F,D=14,E=36,g=30,y=22,L=1,x=1e7,M="http://www.w3.org/2000/svg",u=(a,t={},d)=>{const e=document.createElementNS(M,a);for(const[f,l]of Object.entries(t))e.setAttribute(f,String(l));return d!==void 0&&(e.textContent=d),e},s=a=>Math.round(a).toLocaleString("en-US"),T=a=>Number.isFinite(a)?a>=1e6?`${(a/1e6).toFixed(2)}M`:a>=1e3?`${(a/1e3).toFixed(1)}k`:String(Math.round(a)):"—",$=[{key:"json",label:"JSON (baseline)",fill:"var(--crimson)"},{key:"self-describing",label:"self-describing (MessagePack)",fill:"var(--amber)"},{key:"tag",label:"field-tag (protobuf/Thrift)",fill:"var(--teal)"},{key:"writer-reader",label:"writer/reader-schema (Avro)",fill:"var(--slate)"}];class U extends HTMLElement{connectedCallback(){this.recordCountLog=3,this.fieldCount=7,this.nameLen=16,this.valueBytesPerField=8,this.innerHTML=`
+      <div class="panel">
+        <svg viewBox="0 0 ${S} ${B}" role="img" width="100%"
+             aria-label="Four horizontal bars on a log-byte axis comparing total wire size for the same record shape under JSON, MessagePack-style self-describing encoding, protobuf/Thrift-style field tags, and Avro-style writer/reader-schema resolution."></svg>
+        <div class="readouts"></div>
+        <p class="verdict"></p>
+        <div class="controls">
+          <label>
+            record count (log scale)
+            <input type="range" data-s="records" min="0" max="4" step="0.05" value="3"
+                   aria-label="Number of records, from 1 to 10,000 on a log scale">
+            <output class="num" data-o="records"></output>
+          </label>
+          <label>
+            fields per record
+            <input type="range" data-s="fields" min="3" max="12" step="1" value="7"
+                   aria-label="Number of fields in each record">
+            <output class="num" data-o="fields"></output>
+          </label>
+        </div>
+        <div class="controls">
+          <label>
+            field-name length
+            <input type="range" data-s="namelen" min="2" max="48" step="1" value="16"
+                   aria-label="Characters per field name, used only by the self-describing and JSON styles">
+            <output class="num" data-o="namelen"></output>
+          </label>
+        </div>
+      </div>`,this.svg=this.querySelector("svg");const l=this.querySelector(".readouts");this.ro={};for(const i of["records","JSON total","self-describing total","tag total","writer-reader total","self-describing overhead / record"]){const o=document.createElement("div");o.className="ro",o.innerHTML=`<span class="k">${i}</span><span class="v">—</span>`,l.appendChild(o),this.ro[i]=o}this.verdict=this.querySelector(".verdict");const c=i=>this.querySelector(`[data-s="${i}"]`),n=(i,o,m=Number)=>{c(i).addEventListener("input",()=>{this[o]=m(c(i).value),this.labels()}),c(i).addEventListener("change",()=>{this[o]=m(c(i).value),this.draw()})};n("records","recordCountLog"),n("fields","fieldCount"),n("namelen","nameLen"),this.labels(),this.draw()}get recordCount(){return Math.round(10**this.recordCountLog)}labels(){this.querySelector('[data-o="records"]').textContent=s(this.recordCount),this.querySelector('[data-o="fields"]').textContent=String(this.fieldCount),this.querySelector('[data-o="namelen"]').textContent=`${this.nameLen} chars`}shape(){return{fields:Array.from({length:this.fieldCount},(d,e)=>({tag:e+1,name:"x".repeat(this.nameLen),valueBytes:this.valueBytesPerField})),recordCount:this.recordCount}}draw(){const t=this.svg;for(;t.firstChild;)t.removeChild(t.firstChild);const d=this.shape(),e=A(d),f=N({...d},"self-describing");t.appendChild(u("text",{x:0,y:D,fill:"var(--ink)","font-size":12,"font-weight":600},`${s(this.recordCount)} records × ${this.fieldCount} fields, ${this.nameLen}-char names — total wire bytes`));const l=r=>h+Math.log10(Math.max(L,Math.min(x,r))/L)/Math.log10(x/L)*O,c=E+$.length*(g+y);for(const r of[1,100,1e4,1e6,1e7])t.appendChild(u("line",{x1:l(r),y1:E-6,x2:l(r),y2:c,stroke:"var(--rule)","stroke-width":1,"stroke-dasharray":"2 4"})),t.appendChild(u("text",{x:l(r),y:c+14,fill:"var(--ink-soft)","font-size":10,"text-anchor":"middle"},T(r)+" B"));$.forEach((r,v)=>{const b=E+v*(g+y),_=e[r.key],p=l(_)-h;t.appendChild(u("text",{x:h-8,y:b+g/2+4,fill:"var(--ink-soft)","font-size":10,"text-anchor":"end"},r.label)),t.appendChild(u("rect",{x:h,y:b,width:Math.max(.5,p),height:g,fill:r.fill}));const w=`${T(_)} B`,C=p>w.length*6.2+12;t.appendChild(u("text",{x:C?h+p/2:h+p+6,y:b+g/2+4,fill:C?"var(--paper)":"var(--ink-soft)","font-size":10,"font-weight":600,"text-anchor":C?"middle":"start"},w))});const n=(r,v)=>this.ro[r].querySelector(".v").textContent=v;n("records",s(this.recordCount)),n("JSON total",`${s(e.json)} B`),n("self-describing total",`${s(e["self-describing"])} B`),n("tag total",`${s(e.tag)} B`),n("writer-reader total",`${s(e["writer-reader"])} B`),n("self-describing overhead / record",`${f} B`);const i=e.json/e["writer-reader"],o=e["self-describing"]/e["writer-reader"],m=e.tag/e["writer-reader"];this.verdict.textContent=`At ${s(this.recordCount)} records of ${this.fieldCount} fields with ${this.nameLen}-character names, JSON is ${s(e.json)} B, self-describing is ${s(e["self-describing"])} B, field-tag is ${s(e.tag)} B, and writer/reader-schema is ${s(e["writer-reader"])} B — ratios of ${i.toFixed(2)}×, ${o.toFixed(2)}× and ${m.toFixed(2)}× against the smallest. Drag field-name length up and the JSON and self-describing bars grow — ${f} B of self-describing's per-record total is the field names and their markers alone — while the tag and writer/reader bars do not move, because neither one puts a name on the wire.`}}customElements.define("binary-schema-encodings-rig",U);
