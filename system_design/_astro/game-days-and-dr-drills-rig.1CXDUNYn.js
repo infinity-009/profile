@@ -1,0 +1,49 @@
+import{r as Y,m as z,s as W,a as V}from"./game-days-and-dr-drills.BWn3CSiO.js";import"./active-active-vs-passive.CT2JYabs.js";import"./multi-az-multi-region.BRJncOdP.js";import"./latency-table.Z10ZPnGR.js";import"./handshake.C9Kv9N2Y.js";import"./kernel.DrC0sNW-.js";const S=720,G=760,o=130,j=40,w=S-o-j,K=14,$=34,P=30,I=20,U=[1,2,4,6,12,26,52],H=$+2*(P+I)+50,B=H+24,R=18,q=10,X=U.length*(R+q),N=B+X+56,g=N+20,f=30,Q="http://www.w3.org/2000/svg",n=(e,t={},s)=>{const y=document.createElementNS(Q,e);for(const[D,x]of Object.entries(t))y.setAttribute(D,String(x));return s!==void 0&&(y.textContent=s),y},T=e=>Math.round(e).toLocaleString("en-US"),J=e=>{if(!Number.isFinite(e))return"—";const t=e<0?"-":"",s=Math.abs(e);return s>=1e9?`${t}${(s/1e9).toFixed(1)}B`:s>=1e6?`${t}${(s/1e6).toFixed(1)}M`:s>=1e3?`${t}${(s/1e3).toFixed(1)}k`:`${t}${Math.round(s)}`},M=e=>`$${J(e)}`,F=e=>`${(e*100).toFixed(e*100<1?2:1)}%`,r=e=>Number.isFinite(e)?e<1?`${Math.round(e*60)} s`:e<60?`${e.toFixed(0)} min`:e<1440?`${(e/60).toFixed(1)} h`:`${(e/1440).toFixed(1)} d`:"—";class Z extends HTMLElement{connectedCallback(){this.paperRto=60,this.months=6,this.decayRate=.15,this.costPerDrill=8e3,this.downtimeCostPerMin=3e3,this.disasterProb=.15,this.backupIntervalH=24,this.claimedRpo=60,this.innerHTML=`
+      <div class="panel">
+        <svg viewBox="0 0 ${S} ${G}" role="img" width="100%"
+             aria-label="Top: paper RTO against the measured RTO a decayed, untested runbook actually produces after some number of months. Middle: seven candidate drill frequencies, each a stacked bar of annual drill cost and expected annual staleness cost, with a traced total-cost curve showing an interior minimum. Bottom: a claimed recovery point objective against what the actual backup interval can deliver."></svg>
+        <div class="readouts"></div>
+        <p class="verdict"></p>
+        <div class="controls">
+          <label>
+            months since last drill
+            <input type="range" data-s="months" min="0" max="24" step="1" value="6"
+                   aria-label="Months since the runbook was last exercised for real">
+            <output class="num" data-o="months"></output>
+          </label>
+          <label>
+            runbook decay rate
+            <input type="range" data-s="decay" min="0" max="50" step="1" value="${Math.round(.15*100)}"
+                   aria-label="How fast the runbook drifts, percent inflation per month">
+            <output class="num" data-o="decay"></output>
+          </label>
+        </div>
+        <div class="controls">
+          <label>
+            cost per drill
+            <input type="range" data-s="cost" min="1000" max="30000" step="500" value="8000"
+                   aria-label="Engineer-hours plus expected mishap cost of one drill">
+            <output class="num" data-o="cost"></output>
+          </label>
+          <label>
+            downtime cost per minute
+            <input type="range" data-s="downtime" min="100" max="20000" step="100" value="3000"
+                   aria-label="Dollar cost of one minute of real downtime">
+            <output class="num" data-o="downtime"></output>
+          </label>
+        </div>
+        <div class="controls">
+          <label>
+            backup interval
+            <input type="range" data-s="interval" min="1" max="72" step="1" value="24"
+                   aria-label="Hours between backups or replication batches">
+            <output class="num" data-o="interval"></output>
+          </label>
+          <label>
+            claimed RPO
+            <input type="range" data-s="rpo" min="1" max="1440" step="1" value="60"
+                   aria-label="The recovery point objective a team has told the business it can hit, in minutes">
+            <output class="num" data-o="rpo"></output>
+          </label>
+        </div>
+      </div>`,this.svg=this.querySelector("svg");const v=this.querySelector(".readouts");this.ro={};for(const l of["measured RTO","RTO gap","cheapest total-cost frequency","that frequency's annual cost","achievable RPO","RPO shortfall"]){const h=document.createElement("div");h.className="ro",h.innerHTML=`<span class="k">${l}</span><span class="v">—</span>`,v.appendChild(h),this.ro[l]=h}this.verdict=this.querySelector(".verdict");const i=l=>this.querySelector(`[data-s="${l}"]`),u=(l,h,C=1)=>{i(l).addEventListener("input",()=>{this[h]=Number(i(l).value)/C,this.labels(),this.draw()})};u("months","months"),u("decay","decayRate",100),u("cost","costPerDrill"),u("downtime","downtimeCostPerMin"),u("interval","backupIntervalH"),u("rpo","claimedRpo"),this.labels(),this.draw()}labels(){this.querySelector('[data-o="months"]').textContent=`${T(this.months)} mo`,this.querySelector('[data-o="decay"]').textContent=`${F(this.decayRate)}/mo`,this.querySelector('[data-o="cost"]').textContent=M(this.costPerDrill),this.querySelector('[data-o="downtime"]').textContent=`${M(this.downtimeCostPerMin)}/min`,this.querySelector('[data-o="interval"]').textContent=`${T(this.backupIntervalH)} h`,this.querySelector('[data-o="rpo"]').textContent=r(this.claimedRpo)}draw(){const t=this.svg;for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(n("text",{x:0,y:K,fill:"var(--ink)","font-size":12,"font-weight":600},`paper RTO vs. measured RTO after ${T(this.months)} months untested`)),Y({monthsSinceLastDrill:this.months,decayRatePerMonth:this.decayRate});const s=z({paperRtoMinutes:this.paperRto,monthsSinceLastDrill:this.months,decayRatePerMonth:this.decayRate}),y=Math.max(this.paperRto,s,1)*1.15,D=a=>a/y*w,x=(a,p,c,d)=>{const m=Math.max(1.5,D(p));t.appendChild(n("text",{x:o-8,y:a+P/2+4,fill:"var(--ink-soft)","font-size":10,"text-anchor":"end"},d)),t.appendChild(n("rect",{x:o,y:a,width:m,height:P,fill:c}));const b=r(p),E=m>b.length*6.2+12;t.appendChild(n("text",{x:E?o+m/2:o+m+6,y:a+P/2+4,fill:E?"var(--paper)":"var(--ink-soft)","font-size":10,"font-weight":600,"text-anchor":E?"middle":"start"},b))};x($,this.paperRto,"var(--teal)","paper RTO"),x($+P+I,s,s>this.paperRto*1.5?"var(--crimson)":"var(--amber)","measured RTO"),t.appendChild(n("text",{x:0,y:H,fill:"var(--ink)","font-size":12,"font-weight":600},"annual cost by drill frequency — drill cost (teal) + staleness risk (crimson) stacked"));const A=W(U,{paperRtoMinutes:this.paperRto,decayRatePerMonth:this.decayRate,costPerDrill:this.costPerDrill,realDisasterProbPerYear:this.disasterProb,downtimeCostPerMinute:this.downtimeCostPerMin}),k=Math.max(...A.map(a=>a.totalAnnualCost),1)*1.1,L=a=>a/k*w,v=A.reduce((a,p)=>p.totalAnnualCost<a.totalAnnualCost?p:a,A[0]);A.forEach((a,p)=>{const c=B+p*(R+q),d=Math.max(0,L(a.drillCostAnnual)),m=Math.max(0,L(a.stalenessCostAnnual)),b=a.drillsPerYear===v.drillsPerYear;t.appendChild(n("text",{x:o-8,y:c+R/2+4,fill:b?"var(--ink)":"var(--ink-soft)","font-size":10,"font-weight":b?700:400,"text-anchor":"end"},`${a.drillsPerYear}/yr`)),t.appendChild(n("rect",{x:o,y:c,width:d,height:R,fill:"var(--teal)",opacity:b?1:.75})),t.appendChild(n("rect",{x:o+d,y:c,width:m,height:R,fill:"var(--crimson)",opacity:b?1:.6})),b&&t.appendChild(n("rect",{x:o-2,y:c-2,width:d+m+4,height:R+4,fill:"none",stroke:"var(--ink)","stroke-width":1.5,"stroke-dasharray":"3,2"}));const E=M(a.totalAnnualCost);t.appendChild(n("text",{x:o+d+m+6,y:c+R/2+4,fill:"var(--ink-soft)","font-size":10},E))}),t.appendChild(n("text",{x:0,y:N,fill:"var(--ink)","font-size":12,"font-weight":600},`claimed RPO vs. what a ${T(this.backupIntervalH)}h backup interval can actually deliver`));const i=V({claimedRpoMinutes:this.claimedRpo,backupIntervalHours:this.backupIntervalH}),u=Math.max(i.achievableRpoMinutes,i.claimedRpoMinutes,1)*1.15,l=a=>a/u*w;t.appendChild(n("text",{x:o-8,y:g+f/2+4,fill:"var(--ink-soft)","font-size":10,"text-anchor":"end"},"achievable"));const h=Math.max(1.5,l(i.achievableRpoMinutes));t.appendChild(n("rect",{x:o,y:g,width:h,height:f,fill:"var(--slate)"})),t.appendChild(n("text",{x:o+h+6,y:g+f/2+4,fill:"var(--ink-soft)","font-size":10},r(i.achievableRpoMinutes)));const C=g+f+14;t.appendChild(n("text",{x:o-8,y:C+f/2+4,fill:"var(--ink-soft)","font-size":10,"text-anchor":"end"},"claimed"));const O=Math.max(1.5,l(i.claimedRpoMinutes));t.appendChild(n("rect",{x:o,y:C,width:O,height:f,fill:i.achievable?"var(--teal)":"var(--crimson)"})),t.appendChild(n("text",{x:o+O+6,y:C+f/2+4,fill:"var(--ink-soft)","font-size":10},r(i.claimedRpoMinutes)));const _=(a,p,c)=>{const d=this.ro[a];d.querySelector(".v").textContent=p,c?d.dataset.level=c:delete d.dataset.level};_("measured RTO",r(s),s>this.paperRto*1.5?"bad":"warn"),_("RTO gap",r(s-this.paperRto),s>this.paperRto?"bad":"ok"),_("cheapest total-cost frequency",`${v.drillsPerYear}/yr`,"ok"),_("that frequency's annual cost",M(v.totalAnnualCost)),_("achievable RPO",r(i.achievableRpoMinutes)),_("RPO shortfall",i.achievable?"none — claim is safe":r(i.gapMinutes),i.achievable?"ok":"bad"),this.verdict.innerHTML=`After <b>${T(this.months)}</b> months with no drill, a decay rate of <b>${F(this.decayRate)}/month</b> inflates a <b>${r(this.paperRto)}</b> paper RTO to a measured <b>${r(s)}</b> — a gap of <b>${r(Math.max(0,s-this.paperRto))}</b> nobody sees until a real recovery happens. Across the frequency sweep, <b>${v.drillsPerYear} drills/year</b> minimizes total annual cost at <b>${M(v.totalAnnualCost)}</b>, cheaper than drilling rarely (dominated by staleness risk) or constantly (dominated by drill cost itself). And a claimed RPO of <b>${r(this.claimedRpo)}</b> against a <b>${T(this.backupIntervalH)}h</b> backup interval is ${i.achievable?"<b>achievable</b> — the cadence already beats the claim":`<b>not achievable</b> — the cadence can only promise <b>${r(i.achievableRpoMinutes)}</b>, a <b>${r(i.gapMinutes)}</b> shortfall a drill would expose immediately`}.`}}customElements.get("game-days-and-dr-drills-rig")||customElements.define("game-days-and-dr-drills-rig",Z);

@@ -1,0 +1,35 @@
+import{c as L}from"./quorum.Xv1VdxxC.js";import{r as I}from"./kernel.DrC0sNW-.js";function W(o,e,n){if(n>e)throw new RangeError("shard size N cannot exceed the worker pool M");if(n<0||e<0)throw new RangeError("M and N must be non-negative");const t=Array.from({length:e},(s,r)=>r);for(let s=0;s<n;s++){const r=s+Math.floor(o()*(e-s));[t[s],t[r]]=[t[r],t[s]]}return t.slice(0,n).sort((s,r)=>s-r)}function z(o,e){if(e<=0)throw new RangeError("N must be positive");const n=[];for(let t=0;t<o;t+=e)n.push(Array.from({length:Math.min(e,o-t)},(s,r)=>t+r));return n}function N({M:o,N:e}){return L(o,e)}function P(o,e){const n=new Set(e),t=o.filter(s=>n.has(s)).length;return t===0?"unaffected":t===o.length?"knocked-out":"degraded"}function G({M:o,N:e,K:n}){const t=N({M:o,N:e}),s=t>0?L(n,e)/t:0,r=t>0?L(o-n,e)/t:0;return{"knocked-out":s,unaffected:r,degraded:1-s-r}}function B({M:o,N:e,T:n}){const t=N({M:o,N:e});if(n>t)return 1;let s=1;for(let r=0;r<n;r++)s*=(t-r)/t;return 1-s}const _=720,A=46,q=20,X=_-A-q,x=30,C=20,T=9,D=1,Y=46,O=20,j=4,U=16,V=1,J=4,Q=8,Z=32,tt="http://www.w3.org/2000/svg",m=(o,e={},n)=>{const t=document.createElementNS(tt,o);for(const[s,r]of Object.entries(e))t.setAttribute(s,String(r));return n!==void 0&&(t.textContent=n),t},u=o=>`${(o*100).toFixed(1)}%`,F=o=>Number.isFinite(o)?o>=1e6?o.toExponential(1).replace("e+","×10^"):o>=1e3?`${(o/1e3).toFixed(1)}k`:String(Math.round(o)):"—",et=o=>Number.isFinite(o)?o<10?o.toFixed(1):F(o):"—";class nt extends HTMLElement{connectedCallback(){this.M=8,this.N=2,this.K=2,this.T=20,this.seed=20260811,this.innerHTML=`
+      <div class="panel">
+        <svg viewBox="0 0 ${_} 100" role="img" width="100%"
+             aria-label="A strip of M workers with the first K marked bad, then two panels: shuffle sharding's random per-tenant shard combinations, and a naive fixed-grouping baseline, each row coloured by whether that tenant is knocked out, degraded, or unaffected."></svg>
+        <div class="readouts"></div>
+        <p class="verdict"></p>
+        <div class="controls">
+          <label>
+            worker pool (M)
+            <input type="range" data-s="m" min="${j}" max="${U}" step="1" value="8"
+                   aria-label="Total number of workers in the shared pool">
+            <output class="num" data-o="m"></output>
+          </label>
+          <label>
+            shard size (N)
+            <input type="range" data-s="n" min="${V}" max="${J}" step="1" value="2"
+                   aria-label="Number of workers each tenant's shard holds">
+            <output class="num" data-o="n"></output>
+          </label>
+        </div>
+        <div class="controls">
+          <label>
+            bad workers (K)
+            <input type="range" data-s="k" min="0" max="${U}" step="1" value="2"
+                   aria-label="How many of the workers, counted from worker 0, are currently bad">
+            <output class="num" data-o="k"></output>
+          </label>
+          <label>
+            tenants shown (T)
+            <input type="range" data-s="t" min="${Q}" max="${Z}" step="1" value="20"
+                   aria-label="Number of tenants drawn in the grid">
+            <output class="num" data-o="t"></output>
+          </label>
+        </div>
+      </div>`,this.svg=this.querySelector("svg");const r=this.querySelector(".readouts");this.ro={};for(const c of["shuffle sharding: KO / degraded / OK","naive grouping: KO / degraded / OK","possible shuffle shards","chance two tenants collide"]){const i=document.createElement("div");i.className="ro",i.innerHTML=`<span class="k">${c}</span><span class="v">—</span>`,r.appendChild(i),this.ro[c]=i}this.verdict=this.querySelector(".verdict");const h=c=>this.querySelector(`[data-s="${c}"]`),f=(c,i)=>{h(c).addEventListener("input",()=>{this[i]=Number(h(c).value),this.draw()})};f("m","M"),f("n","N"),f("k","K"),f("t","T"),this.draw()}draw(){this.N=Math.min(this.N,this.M),this.querySelector('[data-s="n"]').max=this.M;const{M:e,N:n,T:t,seed:s}=this,r=Math.min(this.K,e),h=Array.from({length:r},(a,p)=>p);this.querySelector('[data-o="m"]').textContent=String(e),this.querySelector('[data-o="n"]').textContent=String(n),this.querySelector('[data-o="k"]').textContent=String(r),this.querySelector('[data-o="t"]').textContent=String(t);const f=I(s),c=Array.from({length:t},()=>W(f,e,n)),i=z(e,n),w=Array.from({length:t},(a,p)=>i[p%i.length]),d=this.svg;for(;d.firstChild;)d.removeChild(d.firstChild);const l=X/e,k=a=>A+a*l;d.appendChild(m("text",{x:0,y:x-10,fill:"var(--ink)","font-size":12,"font-weight":600},`${e} workers, ${r} bad`));for(let a=0;a<e;a++){const p=h.includes(a);d.appendChild(m("rect",{x:k(a)+1,y:x,width:Math.max(1,l-2),height:C,fill:p?"var(--crimson)":"var(--paper-sunk)",stroke:"var(--rule)","stroke-width":1})),l>14&&d.appendChild(m("text",{x:k(a)+l/2,y:x+C/2+4,"text-anchor":"middle",fill:p?"var(--paper)":"var(--ink-soft)","font-size":9},String(a)))}const S=x+C+22,v=O+t*(T+D),M=this.drawPanel(d,"shuffle sharding — a random combination per tenant",S,c,h,l,k),H=this.drawPanel(d,`naive fixed grouping — ${i.length} shared groups of ${n}, no diversity`,M+v+Y,w,h,l,k)+v+12;d.setAttribute("viewBox",`0 0 ${_} ${H}`);const g=G({M:e,N:n,K:r}),$={"knocked-out":0,degraded:0,unaffected:0};for(const a of w)$[P(a,h)]++;const b={"knocked-out":$["knocked-out"]/t,degraded:$.degraded/t,unaffected:$.unaffected/t},K=N({M:e,N:n}),R=B({M:e,N:n,T:t}),y=(a,p)=>this.ro[a].querySelector(".v").textContent=p;y("shuffle sharding: KO / degraded / OK",`${u(g["knocked-out"])} / ${u(g.degraded)} / ${u(g.unaffected)}`),y("naive grouping: KO / degraded / OK",`${u(b["knocked-out"])} / ${u(b.degraded)} / ${u(b.unaffected)}`),y("possible shuffle shards",F(K)),y("chance two tenants collide",u(R));const E=g["knocked-out"]>0?b["knocked-out"]/g["knocked-out"]:b["knocked-out"]>0?1/0:1;this.verdict.innerHTML=`With <b>${e}</b> workers, <b>${n}</b>-worker shards, and <b>${r}</b> bad, shuffle sharding fully knocks out <b>${u(g["knocked-out"])}</b> of tenants — the fraction of all ${F(K)} possible shards that are a subset of the bad set, <code>C(${r},${n})/C(${e},${n})</code>. Another <b>${u(g.degraded)}</b> lose one worker out of ${n} and can recover by retrying against the rest of their own shard. The naive fixed-grouping baseline, sharing the identical shard across every tenant in a group, fully knocks out <b>${u(b["knocked-out"])}</b> instead`+(Number.isFinite(E)&&E>1.05?` — <b>${et(E)}×</b> more.`:".")}drawPanel(e,n,t,s,r,h,f){e.appendChild(m("text",{x:0,y:t+12,fill:"var(--ink)","font-size":11,"font-weight":600},n));const c=t+O;return s.forEach((i,w)=>{const d=c+w*(T+D),l=P(i,r),k=l==="knocked-out"?"var(--crimson)":l==="degraded"?"var(--amber-wash)":"transparent",S=l==="knocked-out"?.22:1;e.appendChild(m("rect",{x:A,y:d,width:_-A-q,height:T,fill:k,"fill-opacity":S}));for(const v of i){const M=r.includes(v);e.appendChild(m("rect",{x:f(v)+1,y:d,width:Math.max(1,h-2),height:T,fill:M?"var(--crimson)":"var(--slate)"}))}}),t}}customElements.define("shuffle-shard-rig",nt);

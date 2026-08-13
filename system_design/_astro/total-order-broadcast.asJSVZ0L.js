@@ -1,0 +1,1 @@
+import{c as o}from"./raft.Dg-yZW-P.js";function a(t,e=1){if(t<=0)throw new RangeError("agreementLatencyMs must be positive");if(e<=0)throw new RangeError("batchSize must be positive");return e/(t/1e3)}function s({followerCount:t,meanResponseMs:e,batchSize:r=1}){const n=o(t,e);return a(n,r)}export{a as s,s as t};

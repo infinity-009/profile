@@ -1,0 +1,41 @@
+import{u as F,a as j,n as I,j as q}from"./normalization-and-normal-forms._EiXSkne.js";const D=720,W=420,s=130,H=40,$=D-s-H,G=14,X=32,w=170,P=w+46,y=P+20,h=30,b=22,A=100,L=1,O=1e9,K="http://www.w3.org/2000/svg",n=(o,e={},m)=>{const d=document.createElementNS(K,o);for(const[x,C]of Object.entries(e))d.setAttribute(x,String(C));return m!==void 0&&(d.textContent=m),d},p=o=>Math.round(o).toLocaleString("en-US"),E=o=>`${(o*100).toFixed(1)}%`,r=o=>Number.isFinite(o)?o>=1e9?`${(o/1e9).toFixed(1)}B`:o>=1e6?`${(o/1e6).toFixed(1)}M`:o>=1e3?`${(o/1e3).toFixed(1)}k`:`${Math.round(o)}`:"—";class Y extends HTMLElement{connectedCallback(){this.duplicateCount=5,this.errorRatePct=.05*100,this.rowCount=1e4,this.duplicationFactor=50,this.readCount=5e3,this.duplicatedColumnBytes=40,this.foreignKeyBytes=8,this.lookupRowBytes=40,this.extraCostPerRead=1,this.innerHTML=`
+      <div class="panel">
+        <svg viewBox="0 0 ${D} ${W}" role="img" width="100%"
+             aria-label="Top: a curve of update-anomaly risk against duplicate count, with a marker at the current slider value. Bottom: three bars comparing unnormalized storage, normalized storage, and the added join cost at the current read volume."></svg>
+        <div class="readouts"></div>
+        <p class="verdict"></p>
+        <div class="controls">
+          <label>
+            duplicate rows
+            <input type="range" data-s="dupes" min="1" max="${A}" step="1" value="5"
+                   aria-label="How many rows duplicate the same fact and would each need an independent update">
+            <output class="num" data-o="dupes"></output>
+          </label>
+          <label>
+            per-update error rate
+            <input type="range" data-s="err" min="0" max="50" step="1" value="${.05*100}"
+                   aria-label="Percent chance any one of those updates is missed or inconsistent">
+            <output class="num" data-o="err"></output>
+          </label>
+        </div>
+        <div class="controls">
+          <label>
+            row count
+            <input type="range" data-s="rows" min="100" max="200000" step="100" value="10000"
+                   aria-label="Rows in the fact table">
+            <output class="num" data-o="rows"></output>
+          </label>
+          <label>
+            duplication factor
+            <input type="range" data-s="dupfactor" min="1" max="1000" step="1" value="50"
+                   aria-label="Rows per distinct value — higher means more redundancy to remove">
+            <output class="num" data-o="dupfactor"></output>
+          </label>
+          <label>
+            reads/period
+            <input type="range" data-s="reads" min="0" max="2000000" step="1000" value="5000"
+                   aria-label="Reads that need the looked-up fact, per observation period">
+            <output class="num" data-o="reads"></output>
+          </label>
+        </div>
+      </div>`,this.svg=this.querySelector("svg");const g=this.querySelector(".readouts");this.ro={};for(const a of["update anomaly risk","unnormalized storage","normalized storage","storage saved","join cost added","net normalize benefit"]){const i=document.createElement("div");i.className="ro",i.innerHTML=`<span class="k">${a}</span><span class="v">—</span>`,g.appendChild(i),this.ro[a]=i}this.verdict=this.querySelector(".verdict");const c=a=>this.querySelector(`[data-s="${a}"]`),l=(a,i,u=Number)=>{c(a).addEventListener("input",()=>{this[i]=u(c(a).value),this.labels()}),c(a).addEventListener("change",()=>{this[i]=u(c(a).value),this.draw()})};l("dupes","duplicateCount"),l("err","errorRatePct"),l("rows","rowCount"),l("dupfactor","duplicationFactor"),l("reads","readCount"),this.labels(),this.draw()}labels(){this.querySelector('[data-o="dupes"]').textContent=`${this.duplicateCount}`,this.querySelector('[data-o="err"]').textContent=`${this.errorRatePct}%`,this.querySelector('[data-o="rows"]').textContent=p(this.rowCount),this.querySelector('[data-o="dupfactor"]').textContent=`${this.duplicationFactor}×`,this.querySelector('[data-o="reads"]').textContent=p(this.readCount)}draw(){const e=this.svg;for(;e.firstChild;)e.removeChild(e.firstChild);const m=this.errorRatePct/100,d=F({duplicateCount:this.duplicateCount,perUpdateErrorRate:m}),x=Math.max(1,Math.round(this.rowCount/this.duplicationFactor)),C=j({rowCount:this.rowCount,duplicatedColumnBytes:this.duplicatedColumnBytes}),g=I({rowCount:this.rowCount,foreignKeyBytes:this.foreignKeyBytes,lookupTableRows:x,lookupRowBytes:this.lookupRowBytes}),c=C-g,l=q({readCount:this.readCount,extraCostPerRead:this.extraCostPerRead}),a=c-l,i=this.extraCostPerRead>0?c/this.extraCostPerRead:1/0;e.appendChild(n("text",{x:0,y:G,fill:"var(--ink)","font-size":12,"font-weight":600},`update-anomaly risk vs. duplicate count, at a ${this.errorRatePct}% per-update error rate`));const u=t=>s+Math.min(A,t)/A*$,f=t=>w-t*(w-X);for(const t of[0,.25,.5,.75,1])e.appendChild(n("line",{x1:s,y1:f(t),x2:s+$,y2:f(t),stroke:"var(--rule)","stroke-width":1,"stroke-dasharray":"2 4"})),e.appendChild(n("text",{x:s-10,y:f(t)+4,fill:"var(--ink-soft)","font-size":10,"text-anchor":"end"},E(t)));for(const t of[1,25,50,75,100])e.appendChild(n("text",{x:u(t),y:w+16,fill:"var(--ink-soft)","font-size":10,"text-anchor":"middle"},`${t}`));e.appendChild(n("text",{x:s+$/2,y:w+32,fill:"var(--ink-soft)","font-size":10,"text-anchor":"middle"},"duplicate rows"));const z=[];for(let t=0;t<=A;t++)z.push(`${u(t)},${f(F({duplicateCount:t,perUpdateErrorRate:m}))}`);e.appendChild(n("polyline",{points:z.join(" "),fill:"none",stroke:"var(--amber)","stroke-width":2})),e.appendChild(n("circle",{cx:u(this.duplicateCount),cy:f(d),r:5,fill:"var(--crimson)"})),e.appendChild(n("text",{x:u(this.duplicateCount)+8,y:f(d)-8,fill:"var(--crimson)","font-size":11,"font-weight":600},`${E(d)} at N=${this.duplicateCount}`)),e.appendChild(n("text",{x:0,y:P,fill:"var(--ink)","font-size":12,"font-weight":600},`storage saved by normalizing vs. the join cost it adds at ${p(this.readCount)} reads`));const T=t=>s+Math.log10(Math.max(L,Math.min(O,t))/L)/Math.log10(O/L)*$;for(const t of[1,1e3,1e6,1e9])e.appendChild(n("line",{x1:T(t),y1:y-6,x2:T(t),y2:y+3*(h+b),stroke:"var(--rule)","stroke-width":1,"stroke-dasharray":"2 4"})),e.appendChild(n("text",{x:T(t),y:y+3*(h+b)+14,fill:"var(--ink-soft)","font-size":10,"text-anchor":"middle"},r(t)));const k=(t,_,N,S,M)=>{const R=T(_)-s;e.appendChild(n("text",{x:s-8,y:t+h/2+4,fill:"var(--ink-soft)","font-size":10,"text-anchor":"end"},S)),e.appendChild(n("rect",{x:s,y:t,width:Math.max(.5,R),height:h,fill:N}));const B=`${r(_)} ${M}`,U=R>B.length*5.6+12;e.appendChild(n("text",{x:U?s+R/2:s+R+6,y:t+h/2+4,fill:U?"var(--paper)":"var(--ink-soft)","font-size":10,"font-weight":600,"text-anchor":U?"middle":"start"},B))};k(y,C,"var(--slate)","unnormalized","B"),k(y+(h+b),g,"var(--teal)","normalized","B"),k(y+2*(h+b),l,a>=0?"var(--amber)":"var(--crimson)","join cost added","cost units");const v=(t,_)=>this.ro[t].querySelector(".v").textContent=_;v("update anomaly risk",E(d)),v("unnormalized storage",`${r(C)}B`),v("normalized storage",`${r(g)}B`),v("storage saved",`${r(c)}B`),v("join cost added",`${r(l)}`),v("net normalize benefit",`${a>=0?"+":""}${r(a)}`),this.verdict.textContent=`With the same duplicated fact copied onto ${this.duplicateCount} rows and each independent update missing it ${this.errorRatePct}% of the time, the chance at least one copy ends up inconsistent is ${E(d)} — not because anything is unusually broken, just because ${this.duplicateCount} independent updates all have to land correctly. Normalizing ${p(this.rowCount)} rows down to ${p(x)} distinct values saves ${r(c)} bytes of storage, but adds a join every one of the ${p(this.readCount)} reads now has to pay, costing ${r(l)} — ${a>=0?`still a net win of ${r(a)}`:`a net loss of ${r(-a)}, past the point where reads justify the join`}. ${Number.isFinite(i)?i<=0?"The join cost already exceeds the storage saved at zero extra reads — this fact is a better candidate for denormalizing than normalizing.":`Breakeven is around ${p(i)} reads — past that, denormalizing this fact back onto the row reads cheaper.`:"With no duplication to remove, there is no read volume at which normalizing this fact pays for itself."}`}}customElements.define("normalization-and-normal-forms-rig",Y);

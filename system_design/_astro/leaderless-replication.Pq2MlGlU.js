@@ -1,0 +1,1 @@
+import{s as o}from"./quorum.Xv1VdxxC.js";function a(e,t,n){return 1-o(e,t,n)}function f(e,t,n,r=1){if(e<=0)return 1/0;const i=a(t,n,r);return i<=0?1/0:1/i/e}function s(e,t=2){return e<=1?0:Math.ceil(Math.log(e)/Math.log(t)-1e-9)}function p(e,t,n=2){const r=s(e,n);return t*r*n}function m(e){return e}export{f as a,p as b,s as m,m as n,a as r};
