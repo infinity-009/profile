@@ -1,0 +1,1 @@
+# Serve static build directories beginning with an underscore, including Astro's _astro assets.
