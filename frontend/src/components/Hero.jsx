@@ -37,7 +37,11 @@ const Hero = () => {
             </div>
 
             {/* Main Headline */}
-            <div className="space-y-3">
+            <div 
+              className="space-y-3"
+              data-gaze-target="Mallikarjun Reddy"
+              data-gaze-label="Mallikarjun Reddy · Senior GenAI Engineer"
+            >
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
                 Mallikarjun Reddy
               </h1>
@@ -74,7 +78,11 @@ const Hero = () => {
             </div>
 
             {/* Proof Points */}
-            <div className="pt-6 border-t border-white/[0.08] grid grid-cols-3 gap-4">
+            <div 
+              className="pt-6 border-t border-white/[0.08] grid grid-cols-3 gap-4"
+              data-gaze-target="Production Scale Metrics"
+              data-gaze-label="Scale: ~20M req/day & 40% compute cut"
+            >
               {metrics.map((m, i) => (
                 <div key={i} className="space-y-1">
                   <div className="font-mono text-lg sm:text-xl font-bold text-white tracking-tight">
@@ -95,7 +103,11 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative w-full max-w-[390px] rounded-2xl bg-zinc-950/90 border border-white/[0.1] shadow-2xl backdrop-blur-xl overflow-hidden group">
+            <div 
+              className="relative w-full max-w-[390px] rounded-2xl bg-zinc-950/90 border border-white/[0.1] shadow-2xl backdrop-blur-xl overflow-hidden group"
+              data-gaze-target="System Architecture Spec"
+              data-gaze-label="IIT Roorkee '23 · Kredily GenAI Stack"
+            >
               {/* Corner tech accents */}
               <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-cyan-400/50 z-10"></div>
               <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-cyan-400/50 z-10"></div>
