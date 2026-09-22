@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, FileText, ArrowUpRight, CheckCircle2 } from 'lucide-react';
-import { profile } from '../data/projects';
+import { ArrowDown, FileText, ArrowUpRight } from 'lucide-react';
 
 const Hero = () => {
   const metrics = [
@@ -89,43 +88,76 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Right Column (5 cols): Framed Portrait & Role Card */}
+          {/* Right Column (5 cols): Obsidian System Spec Terminal (No photo) */}
           <motion.div 
             className="lg:col-span-5 flex justify-center lg:justify-end"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative w-full max-w-[340px] rounded-2xl bg-zinc-950/80 border border-white/[0.1] p-3 shadow-2xl backdrop-blur-xl group">
+            <div className="relative w-full max-w-[390px] rounded-2xl bg-zinc-950/90 border border-white/[0.1] shadow-2xl backdrop-blur-xl overflow-hidden group">
               {/* Corner tech accents */}
-              <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-cyan-400/50"></div>
-              <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-cyan-400/50"></div>
-              <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-cyan-400/50"></div>
-              <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-cyan-400/50"></div>
+              <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-cyan-400/50 z-10"></div>
+              <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-cyan-400/50 z-10"></div>
+              <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-cyan-400/50 z-10"></div>
+              <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-cyan-400/50 z-10"></div>
 
-              {/* Photo */}
-              <div className="relative aspect-[4/4.5] w-full rounded-xl overflow-hidden bg-zinc-900 mb-3 border border-white/[0.06]">
-                <img 
-                  src="/images/profile.png" 
-                  alt={profile.name}
-                  className="w-full h-full object-cover grayscale-[25%] contrast-[1.05] group-hover:grayscale-0 transition-all duration-700" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                <div className="absolute bottom-3 left-3 right-3">
-                  <p className="font-semibold text-white text-sm">Mallikarjun Reddy</p>
-                  <p className="font-mono text-[11px] text-zinc-300">IIT Roorkee · Class of 2023</p>
+              {/* Terminal Titlebar */}
+              <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.08] bg-zinc-900/50">
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-rose-500/70"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-amber-500/70"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70"></div>
+                  <span className="ml-2 font-mono text-[11px] text-zinc-400">system_spec.json</span>
                 </div>
+                <span className="font-mono text-[10px] text-emerald-400 flex items-center gap-1.5 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  NOMINAL
+                </span>
               </div>
 
-              {/* Role Snapshot info */}
-              <div className="px-2 py-1.5 space-y-1.5">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-zinc-300 font-mono text-[11px]">Current Role</span>
-                  <span className="text-zinc-200 font-medium">Kredily (Jun 2026 – Pres.)</span>
+              {/* Code / Spec Body */}
+              <div className="p-4 sm:p-5 font-mono text-xs space-y-3.5 leading-relaxed bg-[#0c0d12]/95">
+                <div>
+                  <span className="text-zinc-400 font-semibold">// credentials & identity</span>
+                  <div className="text-zinc-200 mt-1">
+                    <span className="text-cyan-400 font-medium">engineer</span> = &quot;Mallikarjun Reddy&quot;
+                  </div>
+                  <div className="text-zinc-400">
+                    <span className="text-cyan-400 font-medium">education</span> = &quot;IIT Roorkee · Class of 2023&quot;
+                  </div>
                 </div>
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-zinc-300 font-mono text-[11px]">Core Stack</span>
-                  <span className="text-zinc-200 font-mono text-[11px]">Python · RAG · GKE</span>
+
+                <div className="pt-2 border-t border-white/[0.06]">
+                  <span className="text-zinc-400 font-semibold">// current production environment</span>
+                  <div className="text-zinc-200 mt-1">
+                    <span className="text-cyan-400 font-medium">role</span> = &quot;Senior GenAI Engineer | AI Systems&quot;
+                  </div>
+                  <div className="text-zinc-400">
+                    <span className="text-cyan-400 font-medium">org</span> = &quot;Kredily · Bengaluru, India&quot;
+                  </div>
+                </div>
+
+                <div className="pt-2 border-t border-white/[0.06]">
+                  <span className="text-zinc-400 font-semibold">// core engineering domains</span>
+                  <div className="flex flex-wrap gap-1.5 mt-2">
+                    {['Agentic RAG', 'Text-to-SQL', 'LoRA / PEFT', 'Distributed Celery', 'GKE / Kafka', 'PostgreSQL Scale'].map((tag, idx) => (
+                      <span key={idx} className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-[11px] text-zinc-300">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-2 border-t border-white/[0.06] flex items-center justify-between text-[11px]">
+                  <span className="text-zinc-400">production_traffic</span>
+                  <span className="text-emerald-400 font-bold tracking-tight">~20M req / day</span>
+                </div>
+
+                <div className="pt-2 border-t border-white/[0.06] text-[11px] text-zinc-400 flex items-center gap-2">
+                  <span className="text-emerald-400">&gt;</span>
+                  <span>status: <span className="text-zinc-200">production_verified</span></span>
+                  <span className="w-1.5 h-3 bg-cyan-400/80 animate-pulse ml-auto"></span>
                 </div>
               </div>
             </div>
