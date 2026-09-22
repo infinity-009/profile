@@ -1,236 +1,137 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDownRight, Sparkles, Cpu, Eye, Database, Bot, Zap, Github, Linkedin } from 'lucide-react';
+import { ArrowDown, FileText, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { profile } from '../data/projects';
-import NeuralBackground from './NeuralBackground';
-
-const skillIcons = {
-  'AI/ML': Cpu,
-  'Computer Vision': Eye,
-  'Data Engineering': Database,
-  'LLMs & RAG': Bot,
-  'Automation': Zap,
-};
-
-const coreCapabilities = [
-  { name: 'AI/ML', desc: 'Deep Learning & Model Deployment' },
-  { name: 'Computer Vision', desc: 'Object Detection & Recognition' },
-  { name: 'LLMs & RAG', desc: 'Retrieval Augmented Generation' },
-  { name: 'Data Engineering', desc: 'ETL Pipelines & Analytics' },
-  { name: 'Automation', desc: 'End-to-End Process Automation' },
-];
 
 const Hero = () => {
+  const metrics = [
+    { value: '~20M', label: 'Daily requests scaled' },
+    { value: '40%', label: 'Peak compute reduction' },
+    { value: 'IIT Roorkee', label: 'B.Tech Mechanical (2023)' },
+  ];
+
   return (
-    <section id="home" className="relative min-h-screen w-full overflow-hidden flex items-center">
-      {/* Neural Network Background */}
-      <NeuralBackground />
+    <section id="home" className="relative pt-32 pb-20 overflow-hidden bg-subtle-grid">
+      {/* Subtle radial vignette - eliminates harsh borders without glowing orbs */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#090a0f] via-transparent to-[#090a0f] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(14,165,233,0.06),transparent_80%)] pointer-events-none"></div>
       
-      {/* Content overlay */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left content - 7 cols */}
-          <div className="lg:col-span-7">
-            {/* Blurred background card for readability */}
-            <div className="relative">
-              <div className="absolute -inset-4 bg-black/40 backdrop-blur-md rounded-3xl"></div>
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="relative space-y-6 p-4"
-              >
-                {/* Status badge */}
-                <motion.div 
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-sm"
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                  </span>
-                  <span className="text-emerald-300 text-sm font-medium">Open to opportunities</span>
-                </motion.div>
-
-                {/* Main intro */}
-                <div className="flex items-center gap-6">
-                  <motion.div 
-                    className="relative"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3, type: 'spring' }}
-                  >
-                    <div className="w-28 h-28 rounded-2xl overflow-hidden border-2 border-cyan-400/50 shadow-[0_0_40px_rgba(34,211,238,0.4)]">
-                      <img src="/images/profile.png" alt={profile.name} className="w-full h-full object-cover" />
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 p-2 rounded-xl bg-slate-900/90 border border-cyan-500/30 backdrop-blur">
-                      <Sparkles className="w-4 h-4 text-amber-400" />
-                    </div>
-                  </motion.div>
-                  
-                  <div>
-                    <motion.p 
-                      className="text-cyan-400 text-sm font-semibold tracking-wider uppercase"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.4 }}
-                    >
-                      {profile.role}
-                    </motion.p>
-                    <motion.h1 
-                      className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                    >
-                      {profile.name}
-                    </motion.h1>
-                    {/* Social links in hero */}
-                    <motion.div 
-                      className="flex items-center gap-3 mt-3"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.55 }}
-                    >
-                      <a
-                        href={profile.contact.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all"
-                        title="GitHub"
-                      >
-                        <Github className="w-5 h-5" />
-                      </a>
-                      <a
-                        href={profile.contact.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all"
-                        title="LinkedIn"
-                      >
-                        <Linkedin className="w-5 h-5" />
-                      </a>
-                    </motion.div>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <motion.p 
-                  className="text-lg text-gray-300 leading-relaxed max-w-xl"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  Building production-grade AI systems that bridge the gap between research and real-world impact. 
-                  Specialized in <span className="text-cyan-400">Generative AI</span>, <span className="text-emerald-400">Computer Vision</span>, 
-                  and <span className="text-amber-400">scalable data pipelines</span>.
-                </motion.p>
-
-              {/* CTA buttons */}
-              <motion.div 
-                className="flex flex-wrap gap-4 pt-2"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
-              >
-                <a
-                  href="#projects"
-                  className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-900 font-semibold shadow-[0_10px_40px_-10px_rgba(16,185,129,0.5)] transition-all hover:scale-105 hover:shadow-[0_15px_50px_-10px_rgba(16,185,129,0.6)]"
-                >
-                  Explore Projects
-                  <ArrowDownRight className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
-                </a>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/20 text-white font-medium hover:bg-white/5 hover:border-cyan-400/50 transition-all backdrop-blur-sm"
-                >
-                  Let's Connect
-                </a>
-              </motion.div>
-              </motion.div>
+          {/* Left Column (7 cols): Editorial Typography */}
+          <motion.div 
+            className="lg:col-span-7 space-y-7"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Status Beacon */}
+            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="font-mono text-xs text-zinc-300 tracking-wide">
+                Senior GenAI Engineer · Bengaluru, India
+              </span>
             </div>
-          </div>
 
-          {/* Right content - 5 cols - Capabilities Grid */}
-          <div className="lg:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative"
-            >
-              {/* Decorative glow */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 to-emerald-500/10 rounded-3xl blur-xl"></div>
-              
-              <div className="relative p-6 rounded-2xl bg-slate-900/50 border border-white/10 backdrop-blur-xl">
-                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Core Capabilities</h3>
-                
-                <div className="space-y-3">
-                  {coreCapabilities.map((cap, idx) => {
-                    const Icon = skillIcons[cap.name] || Cpu;
-                    return (
-                      <motion.div
-                        key={cap.name}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.5 + idx * 0.1 }}
-                        whileHover={{ x: 5, backgroundColor: 'rgba(34, 211, 238, 0.05)' }}
-                        className="group flex items-center gap-4 p-3 rounded-xl border border-transparent hover:border-cyan-500/30 transition-all cursor-default"
-                      >
-                        <div className="p-2.5 rounded-lg bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 text-cyan-400 group-hover:from-cyan-500/30 group-hover:to-emerald-500/30 transition-all">
-                          <Icon className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <p className="text-white font-medium">{cap.name}</p>
-                          <p className="text-gray-500 text-sm">{cap.desc}</p>
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
+            {/* Main Headline */}
+            <div className="space-y-3">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+                Mallikarjun Reddy
+              </h1>
+              <p className="text-lg sm:text-xl font-medium text-zinc-300 leading-snug">
+                Architecting autonomous <span className="text-white font-semibold">Generative AI products</span> and high-scale <span className="text-white font-semibold">AI Systems</span>.
+              </p>
+            </div>
 
-                {/* Tech stack preview */}
-                <div className="mt-6 pt-4 border-t border-white/10">
-                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">Tech Stack</p>
-                  <div className="flex flex-wrap gap-2">
-                    {['Python', 'PyTorch', 'FastAPI', 'React', 'Docker', 'GCP'].map((tech, i) => (
-                      <motion.span
-                        key={tech}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 1 + i * 0.05 }}
-                        className="px-3 py-1.5 text-xs font-medium bg-white/5 text-gray-300 rounded-lg border border-white/10 hover:border-cyan-400/40 hover:text-cyan-300 transition-all cursor-default"
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
+            {/* Description */}
+            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl">
+              3+ years taking AI systems from research to production. Deep focus on <strong>RAG pipelines</strong>, <strong>Text-to-SQL agents</strong>, <strong>parameter-efficient fine-tuning (LoRA)</strong>, and <strong>high-throughput distributed cloud services</strong> across GKE, PostgreSQL, Kafka, and Celery.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-3.5 pt-1">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-zinc-950 font-medium text-sm hover:bg-zinc-200 transition-all shadow-md shadow-black/30"
+              >
+                <span>Featured Projects</span>
+                <ArrowDown className="w-4 h-4 text-zinc-700" />
+              </a>
+              <a
+                href="/Mallikarjun_Reddy_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Mallikarjun_Reddy_Resume.pdf"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.12] text-zinc-200 font-medium text-sm hover:bg-white/[0.08] hover:text-white transition-all"
+              >
+                <FileText className="w-4 h-4 text-zinc-400" />
+                <span>Download Résumé</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500" />
+              </a>
+            </div>
+
+            {/* Proof Points */}
+            <div className="pt-6 border-t border-white/[0.08] grid grid-cols-3 gap-4">
+              {metrics.map((m, i) => (
+                <div key={i} className="space-y-1">
+                  <div className="font-mono text-lg sm:text-xl font-bold text-white tracking-tight">
+                    {m.value}
                   </div>
+                  <div className="text-[11px] sm:text-xs text-zinc-400 leading-tight">
+                    {m.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right Column (5 cols): Framed Portrait & Role Card */}
+          <motion.div 
+            className="lg:col-span-5 flex justify-center lg:justify-end"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="relative w-full max-w-[340px] rounded-2xl bg-zinc-950/80 border border-white/[0.1] p-3 shadow-2xl backdrop-blur-xl group">
+              {/* Corner tech accents */}
+              <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-cyan-400/50"></div>
+              <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-cyan-400/50"></div>
+              <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-cyan-400/50"></div>
+              <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-cyan-400/50"></div>
+
+              {/* Photo */}
+              <div className="relative aspect-[4/4.5] w-full rounded-xl overflow-hidden bg-zinc-900 mb-3 border border-white/[0.06]">
+                <img 
+                  src="/images/profile.png" 
+                  alt={profile.name}
+                  className="w-full h-full object-cover grayscale-[25%] contrast-[1.05] group-hover:grayscale-0 transition-all duration-700" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div className="absolute bottom-3 left-3 right-3">
+                  <p className="font-semibold text-white text-sm">Mallikarjun Reddy</p>
+                  <p className="font-mono text-[11px] text-zinc-300">IIT Roorkee · Class of 2023</p>
                 </div>
               </div>
-            </motion.div>
-          </div>
-        </div>
 
-        {/* Scroll indicator */}
-        <motion.div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-        >
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-xs text-gray-500 uppercase tracking-widest">Scroll</span>
-            <div className="w-5 h-8 rounded-full border border-gray-600 flex justify-center pt-2">
-              <motion.div 
-                className="w-1 h-2 bg-cyan-400 rounded-full"
-                animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-              />
+              {/* Role Snapshot info */}
+              <div className="px-2 py-1.5 space-y-1.5">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-zinc-300 font-mono text-[11px]">Current Role</span>
+                  <span className="text-zinc-200 font-medium">Kredily (Jun 2026 – Pres.)</span>
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-zinc-300 font-mono text-[11px]">Core Stack</span>
+                  <span className="text-zinc-200 font-mono text-[11px]">Python · RAG · GKE</span>
+                </div>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

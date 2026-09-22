@@ -1,190 +1,228 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Code, Layers, Brain, Server, Shield, Eye, Sparkles, BarChart3, Cpu, Cog } from 'lucide-react';
-import { projects } from '../data/projects';
+import { ArrowUpRight, Github, FolderGit2 } from 'lucide-react';
 
-const categoryIcons = {
-  'AI/ML': Brain,
-  'Generative AI': Sparkles,
-  'Computer Vision': Eye,
-  'Data Engineering': Layers,
-  'Data Science': BarChart3,
-  'Backend': Server,
-  'Security': Shield,
-  'Automation': Cog,
-  'DevOps': Cpu,
-};
+const featuredProjects = [
+  {
+    index: '01',
+    title: 'VisualML Video Generator',
+    category: 'Generative AI & Multimodal',
+    tagline: 'Autonomous prompt-to-video production pipeline',
+    description: 'Translates high-level technical concepts into narrated, multi-scene motion graphics videos. Gemini generates structured storyboards and voice scripts; Remotion programmatically executes animation frames, and FFmpeg handles multi-track audio/video compilation.',
+    tech: ['Gemini API', 'Remotion', 'FFmpeg', 'Google Cloud TTS', 'Python'],
+    link: 'https://github.com/infinity-009/VideoGen',
+    linkText: 'View on GitHub',
+  },
+  {
+    index: '02',
+    title: 'Document AI Chatbot (localGPT)',
+    category: 'RAG & Edge AI',
+    tagline: 'Zero-data-leakage enterprise document intelligence',
+    description: 'Privacy-first retrieval-augmented assistant designed to interrogate confidential internal PDFs and docs entirely on-device, employing local quantized LLMs, vector search, and hybrid semantic retrieval without outbound API requests.',
+    tech: ['RAG', 'Local LLMs', 'ChromaDB', 'LangChain', 'Python'],
+    link: 'https://github.com/infinity-009/localGPT',
+    linkText: 'View on GitHub',
+  },
+  {
+    index: '03',
+    title: 'Text-to-SQL Model Fine-Tuning',
+    category: 'Model Adaptation & Evaluation',
+    tagline: 'Domain-adapted LLMs for relational database querying',
+    description: 'Fine-tuning pipeline training open-source foundation models to translate complex natural-language questions into multi-table SQL queries. Employs parameter-efficient LoRA adapters, AST schema pruning, and rigorous benchmark validation.',
+    tech: ['PEFT / LoRA', 'Llama 3', 'Hugging Face', 'Spider Benchmark', 'PyTorch'],
+    link: 'https://github.com/infinity-009/text2sql',
+    linkText: 'View on GitHub',
+  },
+  {
+    index: '04',
+    title: 'Deep Image Colorization',
+    category: 'Computer Vision & Deep Learning',
+    tagline: 'Conditional GAN framework for chromatic synthesis',
+    description: 'Deep generative framework that reconstructs plausible, high-fidelity color distributions from grayscale imagery. Formulated with conditional GAN architecture, perceptual loss regularization, and high-throughput evaluation scripts.',
+    tech: ['Conditional GANs', 'PyTorch', 'OpenCV', 'Computer Vision'],
+    link: 'https://github.com/infinity-009/image-colorization',
+    linkText: 'View on GitHub',
+  }
+];
 
-const categoryColors = {
-  'AI/ML': 'from-cyan-500 to-blue-500',
-  'Generative AI': 'from-purple-500 to-pink-500',
-  'Computer Vision': 'from-emerald-500 to-cyan-500',
-  'Data Engineering': 'from-orange-500 to-amber-500',
-  'Data Science': 'from-blue-500 to-indigo-500',
-  'Backend': 'from-slate-500 to-zinc-500',
-  'Security': 'from-red-500 to-rose-500',
-  'Automation': 'from-amber-500 to-yellow-500',
-  'DevOps': 'from-teal-500 to-emerald-500',
-};
-
-const ProjectCard = ({ project, index }) => {
-  const Icon = categoryIcons[project.category] || Code;
-  const gradientClass = categoryColors[project.category] || 'from-cyan-500 to-emerald-500';
-  
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.06 }}
-      viewport={{ once: true, margin: "-50px" }}
-      className="group relative"
-    >
-      {/* Animated border gradient */}
-      <div className={`absolute -inset-[1px] bg-gradient-to-r ${gradientClass} rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500`}></div>
-      
-      <div className="relative h-full bg-slate-950 border border-white/10 rounded-2xl overflow-hidden group-hover:border-transparent transition-all duration-300">
-        {/* Top gradient line */}
-        <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${gradientClass} opacity-0 group-hover:opacity-100 transition-opacity`}></div>
-        
-        {/* Category badge */}
-        <div className="absolute top-4 right-4 z-10">
-          <span className={`px-3 py-1 text-xs font-semibold bg-gradient-to-r ${gradientClass} bg-clip-text text-transparent border border-white/10 rounded-full backdrop-blur-sm`}>
-            {project.category}
-          </span>
-        </div>
-        
-        <div className="p-6 h-full flex flex-col">
-          {/* Icon with animated background */}
-          <motion.div 
-            className={`relative w-14 h-14 rounded-xl bg-gradient-to-br ${gradientClass} p-[1px] mb-5`}
-            whileHover={{ rotate: 5, scale: 1.1 }}
-          >
-            <div className="w-full h-full rounded-xl bg-slate-950 flex items-center justify-center">
-              <Icon className="w-7 h-7 text-white" />
-            </div>
-          </motion.div>
-          
-          {/* Title */}
-          <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 group-hover:bg-clip-text transition-all">
-            {project.title}
-          </h3>
-          
-          {/* Description */}
-          <p className="text-gray-400 text-sm leading-relaxed mb-5 flex-grow">
-            {project.description}
-          </p>
-          
-          {/* Tech stack with stagger animation on hover */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.tech.slice(0, 4).map((tech, i) => (
-              <motion.span 
-                key={i}
-                initial={{ opacity: 0.8 }}
-                whileHover={{ scale: 1.05, opacity: 1 }}
-                className="px-2.5 py-1 text-xs font-medium bg-white/5 text-gray-300 rounded-md border border-white/10 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all"
-              >
-                {tech}
-              </motion.span>
-            ))}
-            {project.tech.length > 4 && (
-              <span className="px-2.5 py-1 text-xs font-medium bg-white/5 text-gray-500 rounded-md">
-                +{project.tech.length - 4} more
-              </span>
-            )}
-          </div>
-          
-          {/* Link */}
-          {project.link && project.link !== '#' && (
-            <motion.a 
-              href={project.link} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className={`inline-flex items-center gap-2 text-sm font-medium bg-gradient-to-r ${gradientClass} bg-clip-text text-transparent hover:opacity-80 transition-opacity`}
-              whileHover={{ x: 5 }}
-            >
-              View Project <ExternalLink className="w-4 h-4 text-gray-400" />
-            </motion.a>
-          )}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+const secondaryProjects = [
+  {
+    title: '3D Avatar Motion Capture',
+    category: 'Computer Vision & WebGL',
+    description: 'Real-time browser-based avatar system mirroring 468 facial landmarks and skeletal kinematics via standard webcam.',
+    tech: ['MediaPipe', 'Three.js', 'WebGL'],
+    link: '/edge_ai',
+    isExternal: false,
+    linkText: 'Live Demo'
+  },
+  {
+    title: 'Enterprise AI Assistant',
+    category: 'Conversational Systems',
+    description: 'Corporate assistant featuring reciprocal rank fusion hybrid search (BM25 + vector) and persistent session memory.',
+    tech: ['Gemini 2.0', 'FastRTC', 'Milvus'],
+    link: 'https://github.com/infinity-009',
+    isExternal: true,
+    linkText: 'Codebase'
+  },
+  {
+    title: 'Identity Verification API',
+    category: 'High-Throughput Vision',
+    description: 'Sub-200ms CPU-optimized microservice extracting structured ID data from document images using YOLO and ONNX.',
+    tech: ['YOLO', 'OCR', 'FastAPI', 'ONNX'],
+    link: 'https://github.com/infinity-009',
+    isExternal: true,
+    linkText: 'Microservice'
+  },
+  {
+    title: 'Logistics Stream Pipeline',
+    category: 'Data Engineering',
+    description: 'High-throughput stream processing pipeline ingesting and transforming telemetry feeds for real-time analytics.',
+    tech: ['Apache Spark', 'Kafka', 'PostgreSQL'],
+    link: 'https://github.com/infinity-009',
+    isExternal: true,
+    linkText: 'Pipeline Spec'
+  }
+];
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-16 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-black to-slate-950"></div>
-      
-      {/* Animated grid */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-        backgroundSize: '60px 60px'
-      }}></div>
-      
-      {/* Glowing orbs */}
-      <motion.div 
-        className="absolute top-20 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.15, 0.1]
-        }}
-        transition={{ duration: 8, repeat: Infinity }}
-      ></motion.div>
-      <motion.div 
-        className="absolute bottom-20 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1.2, 1, 1.2],
-          opacity: [0.15, 0.1, 0.15]
-        }}
-        transition={{ duration: 8, repeat: Infinity }}
-      ></motion.div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <motion.span 
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-medium mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <Code className="w-4 h-4" />
-              Portfolio
-            </motion.span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              Featured <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">Projects</span>
+    <section id="projects" className="py-24 border-t border-white/[0.08] relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16">
+          <div>
+            <span className="font-mono text-xs uppercase tracking-widest text-zinc-300">
+              Selected Engineering
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-1">
+              Featured Projects
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl">
-              Production-grade AI systems—from computer vision pipelines to LLM-powered applications driving real business impact.
-            </p>
-          </motion.div>
-          
-          <motion.div 
-            className="flex items-center gap-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30">
-              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-              <span className="text-emerald-400 text-sm font-medium">{projects.length} Projects</span>
-            </div>
-          </motion.div>
+          </div>
+          <p className="text-sm text-zinc-400 max-w-md">
+            Production-grade generative AI, model fine-tuning experiments, and distributed computing systems with public repositories.
+          </p>
         </div>
 
-        {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+        {/* Featured Projects: Editorial alternating rows */}
+        <div className="space-y-6 mb-20">
+          {featuredProjects.map((p, idx) => (
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              className="group p-6 sm:p-8 rounded-2xl bg-zinc-950/60 border border-white/[0.08] hover:border-zinc-600 transition-all duration-300 hover:shadow-xl hover:shadow-black/40"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                
+                {/* Left meta (4 cols) */}
+                <div className="lg:col-span-4 space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs text-zinc-300 font-semibold px-2 py-0.5 rounded bg-white/[0.06] border border-white/[0.08]">
+                      {p.index}
+                    </span>
+                    <span className="font-mono text-xs text-zinc-300">
+                      {p.category}
+                    </span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
+                    {p.title}
+                  </h3>
+                  <p className="text-xs text-zinc-400 font-medium leading-relaxed">
+                    {p.tagline}
+                  </p>
+                </div>
+
+                {/* Right content & stack (8 cols) */}
+                <div className="lg:col-span-8 flex flex-col justify-between h-full space-y-5">
+                  <p className="text-sm text-zinc-300 leading-relaxed">
+                    {p.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/[0.06]">
+                    <div className="flex flex-wrap gap-2">
+                      {p.tech.map((t) => (
+                        <span 
+                          key={t}
+                          className="font-mono text-[11px] text-zinc-300 px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.08]"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-white group-hover:text-cyan-400 hover:underline transition-colors ml-auto"
+                    >
+                      <Github className="w-3.5 h-3.5" />
+                      <span>{p.linkText}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </motion.div>
           ))}
         </div>
+
+        {/* Secondary Archive Grid */}
+        <div className="pt-12 border-t border-white/[0.08]">
+          <div className="mb-8">
+            <h3 className="text-xl font-bold text-white tracking-tight">
+              Additional Systems & Infrastructure
+            </h3>
+            <p className="text-xs text-zinc-400 mt-1">
+              Microservices, pipelines, and internal tools engineered for production.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {secondaryProjects.map((item, i) => (
+              <div 
+                key={i}
+                className="p-5 rounded-xl bg-zinc-950/40 border border-white/[0.06] hover:border-zinc-700 transition-colors flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-mono text-[11px] text-zinc-300">
+                      {item.category}
+                    </span>
+                    <a 
+                      href={item.link}
+                      target={item.isExternal ? "_blank" : undefined}
+                      rel={item.isExternal ? "noopener noreferrer" : undefined}
+                      className="inline-flex items-center gap-1 text-xs text-zinc-400 hover:text-white transition-colors"
+                    >
+                      <span>{item.linkText}</span>
+                      <ArrowUpRight className="w-3 h-3" />
+                    </a>
+                  </div>
+                  <h4 className="text-base font-semibold text-white mb-1.5">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                    {item.description}
+                  </p>
+                </div>
+                
+                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/[0.04]">
+                  {item.tech.map((t) => (
+                    <span key={t} className="font-mono text-[10px] text-zinc-400 px-2 py-0.5 rounded bg-white/[0.03]">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
