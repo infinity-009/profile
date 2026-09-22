@@ -2,9 +2,9 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
-import Skills from './components/Skills';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
+import GazeFocusPilot from './components/GazeFocusPilot';
 
 function App() {
   return (
@@ -13,7 +13,6 @@ function App() {
       <main>
         <Hero />
         <Projects />
-        <Skills />
         <Resume />
         <Contact />
       </main>
@@ -27,6 +26,7 @@ function App() {
           </p>
         </div>
       </footer>
+      <GazeFocusPilot />
     </div>
   );
 }

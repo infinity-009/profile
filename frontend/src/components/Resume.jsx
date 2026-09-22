@@ -1,6 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { FileText, ArrowUpRight, GraduationCap, Award, Briefcase } from 'lucide-react';
+import { FileText, ArrowUpRight, GraduationCap } from 'lucide-react';
 
 const experiences = [
   {
@@ -84,7 +83,11 @@ const Resume = () => {
             </div>
 
             {/* Education Card */}
-            <div className="p-5 rounded-xl bg-zinc-950/40 border border-white/[0.06] space-y-2">
+            <div 
+              className="p-5 rounded-xl bg-zinc-950/40 border border-white/[0.06] space-y-2"
+              data-gaze-target="IIT Roorkee Education"
+              data-gaze-label="IIT Roorkee · Class of 2023"
+            >
               <div className="flex items-center gap-2 text-white font-semibold text-sm">
                 <GraduationCap className="w-4 h-4 text-emerald-400" />
                 <span>Education</span>
@@ -107,13 +110,11 @@ const Resume = () => {
 
           {/* Right Column (8 cols): Chronological Roles */}
           <div className="lg:col-span-8 space-y-8">
-            {experiences.map((exp, idx) => (
-              <motion.div
+            {experiences.map((exp) => (
+              <div
                 key={exp.company}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                data-gaze-target={`${exp.role} @ ${exp.company}`}
+                data-gaze-label={`${exp.role} · ${exp.company}`}
                 className="p-6 sm:p-8 rounded-2xl bg-zinc-950/60 border border-white/[0.08] hover:border-zinc-700 transition-colors"
               >
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-3 pb-3 border-b border-white/[0.06]">
@@ -140,7 +141,7 @@ const Resume = () => {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             ))}
           </div>
 

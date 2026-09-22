@@ -32,3 +32,27 @@
                     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
 }
+
+/* Gaze Focus Spotlight styles */
+[data-gaze-target] {
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.gaze-active-target {
+  border-color: rgba(34, 211, 238, 0.85) !important;
+  box-shadow: 0 0 35px rgba(6, 182, 212, 0.3), inset 0 0 20px rgba(6, 182, 212, 0.08) !important;
+  transform: translateY(-2px) scale(1.008) !important;
+}
+
+/* VisionOS-style Gaze Reticle */
+.gaze-reticle-ring {
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  transition: width 0.15s ease, height 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Mail, Copy, Check, ArrowUpRight, Github, Linkedin, Phone, MapPin } from 'lucide-react';
 import { profile } from '../data/projects';
 
@@ -28,7 +27,11 @@ const Contact = () => {
     <section id="contact" className="py-24 border-t border-white/[0.08] relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="p-8 sm:p-12 rounded-3xl bg-zinc-950/80 border border-white/[0.08] shadow-2xl space-y-8">
+        <div 
+          className="p-8 sm:p-12 rounded-3xl bg-zinc-950/80 border border-white/[0.08] shadow-2xl space-y-8"
+          data-gaze-target="Contact & Collaboration"
+          data-gaze-label="hello@mallikarjunreddy.com"
+        >
           
           <div className="space-y-3">
             <span className="font-mono text-xs uppercase tracking-widest text-zinc-300">
