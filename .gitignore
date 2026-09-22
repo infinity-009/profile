@@ -1,3 +1,7 @@
 projects
 docs
 frontend/node_modules
+.DS_Store
+*.DS_Store
+*_preview*.png
+website_preview*.png

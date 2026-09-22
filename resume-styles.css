@@ -64,31 +64,31 @@ strong, b {
 /* Header */
 .header {
     text-align: center;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 16px;
+    padding-bottom: 10px;
 }
 
 .name {
     font-family: 'Merriweather', serif;
-    font-size: 22pt;
+    font-size: 21pt;
     color: var(--primary-color);
-    margin-bottom: 4px;
+    margin-bottom: 3px;
     letter-spacing: -0.5px;
 }
 
 .title {
-    font-size: 11pt;
+    font-size: 10.5pt;
     color: var(--accent-color);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .contact-row {
-    font-size: 9pt;
-    margin-bottom: 3px;
+    font-size: 8.8pt;
+    margin-bottom: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,18 +106,18 @@ strong, b {
 
 /* Section Styling */
 .section {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .section-title {
-    font-size: 11pt;
+    font-size: 10.5pt;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--primary-color);
     border-bottom: 2px solid #000;
-    margin-bottom: 12px;
-    padding-bottom: 4px;
+    margin-bottom: 8px;
+    padding-bottom: 3px;
     display: flex;
     align-items: center;
 }
@@ -126,19 +126,20 @@ strong, b {
 .summary-text {
     text-align: justify;
     color: #222;
-    line-height: 1.45;
+    line-height: 1.4;
+    font-size: 9.3pt;
 }
 
 /* Experience */
 .entry {
-    margin-bottom: 18px; /* Increased separation as requested */
+    margin-bottom: 10px;
 }
 
 .entry-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
 .entry-main {
@@ -148,18 +149,18 @@ strong, b {
 
 .entry-role {
     font-weight: 700;
-    font-size: 10.5pt;
+    font-size: 10pt;
     color: #000;
 }
 
 .entry-company {
-    font-size: 9.5pt;
+    font-size: 9.2pt;
     color: #333;
     font-weight: 500;
 }
 
 .entry-date {
-    font-size: 9pt;
+    font-size: 8.8pt;
     color: #555;
     white-space: nowrap;
     font-weight: 500;
@@ -168,12 +169,12 @@ strong, b {
 .entry-list {
     list-style-type: square;
     margin-left: 18px;
-    font-size: 9.5pt;
-    line-height: 1.4;
+    font-size: 9.2pt;
+    line-height: 1.35;
 }
 
 .entry-list li {
-    margin-bottom: 3px;
+    margin-bottom: 2px;
     padding-left: 4px;
     color: #333;
 }
