@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "source": "/models/pine/runtime/hero.gltf",
+  "variant": null,
+  "triangles": 549472,
+  "normalisation": "as src/forest.js: Box3.setFromObject(source), base centre to the origin, scaled to unit height",
+  "grid": 12,
+  "frameSize": 192,
+  "atlasSize": 2304,
+  "layout": "hemi-octahedral, frames on grid vertices: frame (i, j) is captured from impFrameDir(i, j, grid) and fills atlas texels x in [i, i+1) * frameSize, y in [j, j+1) * frameSize, y up (GL texture space)",
+  "sphere": {
+    "center": [
+      0,
+      0.5,
+      0
+    ],
+    "radius": 0.5050657535480415
+  },
+  "frameRadius": 0.5270251341370868,
+  "supersample": 4,
+  "side": "front (as the runtime pines)",
+  "albedo": {
+    "file": "albedo.png",
+    "encoding": "RGB: unlit base colour, sRGB-encoded (load as SRGBColorSpace, shader reads linear). A: true coverage (fraction of 16 supersamples hit; mips box-filtered, so coverage is preserved). Colours dilated into transparent texels.",
+    "bytes": 3697878
+  },
+  "normal": {
+    "file": "normal.png",
+    "encoding": "RGB: mean of the covered supersamples' tree-space unit normals * 0.5 + 0.5 (NoColorSpace), not renormalised: its length is the normals' coherence (1 = flat surface). Dilated.",
+    "bytes": 3210223
+  },
+  "mips": [
+    {
+      "level": 0,
+      "x": 0,
+      "y": 0,
+      "size": 2304
+    },
+    {
+      "level": 1,
+      "x": 2304,
+      "y": 0,
+      "size": 1152
+    },
+    {
+      "level": 2,
+      "x": 2304,
+      "y": 1152,
+      "size": 576
+    },
+    {
+      "level": 3,
+      "x": 2304,
+      "y": 1728,
+      "size": 288
+    },
+    {
+      "level": 4,
+      "x": 2304,
+      "y": 2016,
+      "size": 144
+    },
+    {
+      "level": 5,
+      "x": 2304,
+      "y": 2160,
+      "size": 72
+    },
+    {
+      "level": 6,
+      "x": 2304,
+      "y": 2232,
+      "size": 36
+    },
+    {
+      "level": 7,
+      "x": 2304,
+      "y": 2268,
+      "size": 18
+    },
+    {
+      "level": 8,
+      "x": 2304,
+      "y": 2286,
+      "size": 9
+    },
+    {
+      "level": 9,
+      "x": 2304,
+      "y": 2295,
+      "size": 4
+    },
+    {
+      "level": 10,
+      "x": 2304,
+      "y": 2299,
+      "size": 2
+    },
+    {
+      "level": 11,
+      "x": 2304,
+      "y": 2301,
+      "size": 1
+    }
+  ],
+  "meanCoverage": 0.0505,
+  "meanCoherence": 0.631,
+  "bakeMs": 3385,
+  "bakedWith": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)"
+}

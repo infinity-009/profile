@@ -1,0 +1,34 @@
+{
+  "license": "CC0-1.0",
+  "source": "https://polyhaven.com/a/rock_07",
+  "authors": {
+    "Jenelle van Heerden": "All"
+  },
+  "files": {
+    "include": {
+      "rock_07.bin": {
+        "size": 468936,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/rock_07/rock_07.bin",
+        "md5": "817b2cfd1626cb06f18a825f87f58ec3"
+      },
+      "textures/rock_07_arm_4k.jpg": {
+        "size": 2308060,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/rock_07/rock_07_arm_4k.jpg",
+        "md5": "2674759c048370ae200e9573f2dbd426"
+      },
+      "textures/rock_07_nor_gl_4k.jpg": {
+        "size": 9934279,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/rock_07/rock_07_nor_gl_4k.jpg",
+        "md5": "70835832d757ed97293565f573bf68b3"
+      },
+      "textures/rock_07_diff_4k.jpg": {
+        "size": 7671132,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/rock_07/rock_07_diff_4k.jpg",
+        "md5": "f6ee75f0540e35919406483601b259aa"
+      }
+    },
+    "size": 2979,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/rock_07/rock_07_4k.gltf",
+    "md5": "00c41fa453f9644021f5ec4ddf19742e"
+  }
+}

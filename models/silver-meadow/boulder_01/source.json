@@ -1,0 +1,34 @@
+{
+  "license": "CC0-1.0",
+  "source": "https://polyhaven.com/a/boulder_01",
+  "authors": {
+    "Rico Cilliers": "All"
+  },
+  "files": {
+    "include": {
+      "textures/boulder_01_arm_4k.jpg": {
+        "size": 7802675,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/boulder_01/boulder_01_arm_4k.jpg",
+        "md5": "f3bc62981f695346b621b545d4771417"
+      },
+      "boulder_01.bin": {
+        "size": 2938808,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/boulder_01/boulder_01.bin",
+        "md5": "27a19fa031d8b4c3a09261f19c444dc5"
+      },
+      "textures/boulder_01_nor_gl_4k.jpg": {
+        "size": 19220463,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/boulder_01/boulder_01_nor_gl_4k.jpg",
+        "md5": "c4d95f5c52d4552b10636c94cc54835e"
+      },
+      "textures/boulder_01_diff_4k.jpg": {
+        "size": 13282817,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/boulder_01/boulder_01_diff_4k.jpg",
+        "md5": "0bceced14031539cff10d992df24be0e"
+      }
+    },
+    "size": 2773,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/boulder_01/boulder_01_4k.gltf",
+    "md5": "64a2ae2d9b1d8bc95f8334fd4cc9f72b"
+  }
+}

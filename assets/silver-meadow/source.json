@@ -1,0 +1,30 @@
+{
+  "asset": "lichen_rock",
+  "author": "Rico Cilliers",
+  "license": "CC0-1.0",
+  "source": "https://polyhaven.com/a/lichen_rock",
+  "physicalWidthMetres": 2,
+  "maps": [
+    {
+      "name": "albedo.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/lichen_rock/lichen_rock_diff_2k.jpg",
+      "bytes": 4010129,
+      "md5": "5625c90a7b55058b7d89e180376a7cda",
+      "sha256": "f2ec7a10c6cb929653278e00dcfb0e7e07aea178136a37eac7478d2b9cdd5e96"
+    },
+    {
+      "name": "normal.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/lichen_rock/lichen_rock_nor_gl_2k.jpg",
+      "bytes": 4844348,
+      "md5": "801690ee8bbc1d4aa2f16af2d49acc26",
+      "sha256": "89b28336282a07492080a20725d18c7649ae69b1d8e10187ffe143c804bd6d2c"
+    },
+    {
+      "name": "roughness.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/lichen_rock/lichen_rock_rough_2k.jpg",
+      "bytes": 2108970,
+      "md5": "0f6970ee1ff05b053b58cf9ad2451c15",
+      "sha256": "ad8a3ffad3cc15e8781958179db56dbcc9c82b50021076a0068c9e62d494a4c2"
+    }
+  ]
+}

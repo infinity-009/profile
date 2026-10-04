@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "source": "https://polyhaven.com/a/pine_tree_01",
+  "license": "CC0-1.0",
+  "tiers": {
+    "hero": {
+      "uri": "/models/pine/runtime/hero.gltf",
+      "bytes": 13772743,
+      "materialSlots": [
+        "pine_tree_01_bark",
+        "pine_tree_01_trunk_a",
+        "pine_tree_01_twig",
+        "pine_tree_01_dead_branches"
+      ]
+    },
+    "distance": {
+      "uri": "/models/pine/runtime/distance.gltf",
+      "bytes": 2736880,
+      "materialSlots": [
+        "pine_tree_01_bark",
+        "pine_tree_01_trunk_a",
+        "pine_tree_01_twig",
+        "pine_tree_01_dead_branches"
+      ]
+    },
+    "horizon": {
+      "uri": "/models/pine/runtime/horizon.gltf",
+      "bytes": 967292,
+      "materialSlots": [
+        "pine_tree_01_bark",
+        "pine_tree_01_trunk_a",
+        "pine_tree_01_twig",
+        "pine_tree_01_dead_branches"
+      ]
+    }
+  },
+  "textureBytes": 24732984,
+  "sourceBytes": 91681960,
+  "runtimeBytes": 42209899,
+  "savedBytes": 49472061
+}

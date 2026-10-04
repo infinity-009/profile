@@ -1,0 +1,34 @@
+{
+  "license": "CC0-1.0",
+  "source": "https://polyhaven.com/a/grass_medium_02",
+  "authors": {
+    "Rico Cilliers": "All"
+  },
+  "files": {
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/2k/grass_medium_02/grass_medium_02_2k.gltf",
+    "md5": "fc24d97b602c74c1a9357a7570ae2b87",
+    "size": 8864,
+    "include": {
+      "textures/grass_medium_02_nor_gl_2k.jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/grass_medium_02/grass_medium_02_nor_gl_2k.jpg",
+        "md5": "9ca6e2499ce71446f0cd8a3fc8c54a1b",
+        "size": 353362
+      },
+      "textures/grass_medium_02_diff_2k.jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/grass_medium_02/grass_medium_02_diff_2k.jpg",
+        "md5": "3431e6de76f40f25bef48755f4c6a76a",
+        "size": 456989
+      },
+      "textures/grass_medium_02_arm_2k.jpg": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/grass_medium_02/grass_medium_02_arm_2k.jpg",
+        "md5": "66eb24d4e6dbda01faad666a3517dcd1",
+        "size": 698115
+      },
+      "grass_medium_02.bin": {
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/grass_medium_02/grass_medium_02.bin",
+        "md5": "145041ae03fe02783a0adbd1cdcb4988",
+        "size": 272048
+      }
+    }
+  }
+}

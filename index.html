@@ -1,21 +1,69 @@
 <!doctype html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/gif" href="/infinity.gif" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mallikarjun Reddy | Senior GenAI Engineer & AI Systems</title>
-    <meta name="description" content="Personal portfolio of Mallikarjun Reddy — Senior GenAI Engineer & AI Systems Architect. Specialized in RAG, Text-to-SQL, LLM Fine-Tuning, and High-Throughput Distributed Systems." />
-    <meta name="theme-color" content="#090a0f" />
-    
-    <!-- Google Fonts: Inter & JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-DpP3KCc8.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CVdVN9o1.css">
+    <meta name="theme-color" content="#101b1b" />
+    <meta name="description" content="Mallikarjun Reddy — GenAI engineer building video generation, conversational data applications and interactive systems. Explore the work by a moonlit river." />
+    <title>Mallikarjun Reddy — AI, by the river</title>
+    <link rel="icon" href="data:," />
+    <link rel="preload" href="/valley/valley.bin" as="fetch" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/index-JIIxh3Oy.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CgXwYBYm.css">
   </head>
-  <body class="bg-[#090a0f] text-zinc-100 antialiased selection:bg-cyan-500/20 selection:text-cyan-300">
-    <div id="root"></div>
+  <body>
+    <a class="skip-link" href="#work">Skip to projects</a>
+    <div id="forest" aria-hidden="true"></div>
+    <div class="scene-shade" aria-hidden="true"></div>
+    <header class="masthead">
+      <a class="wordmark" href="#home" aria-label="Mallikarjun Reddy, home">mr<span> / </span></a>
+      <span class="site-note">An engineer's clearing</span>
+      <nav aria-label="Main navigation">
+        <a href="#work">Work <span>04</span></a>
+        <button data-open="about">About</button>
+        <a href="/resume.html" target="_blank" rel="noopener">Résumé ↗</a>
+        <a href="mailto:hello@mallikarjunreddy.com">Say hello ↗</a>
+      </nav>
+    </header>
+    <main>
+      <section id="home" class="hero" aria-labelledby="intro-title">
+        <div class="intro">
+          <p class="eyebrow"><span class="status-light"></span> GenAI / AI engineer · Bengaluru</p>
+          <h1 id="intro-title">Mallikarjun<br />Reddy<span>.</span></h1>
+          <p class="intro-line">Ideas into working AI.<br /><span>Carefully built, end to end.</span></p>
+          <p class="intro-copy">Video generation, conversational data, and the systems that make them work. Come take a look around.</p>
+          <div class="intro-actions"><a class="primary-action" href="#work">Explore the work <span>↗</span></a><button class="text-action" data-open="about">A little about me <span>→</span></button></div>
+          <p id="scene-status" class="scene-status" role="status">Preparing the clearing…</p>
+        </div>
+        <div id="walk-controls" hidden aria-label="Forest navigation">
+          <p>Drag to look · WASD to walk · Shift to run · R to walk on · Click the ground to go there · V view · B sky · M map · E pet, C call · Esc to return</p>
+          <div class="dog-controls view-controls"><button id="map-open" aria-haspopup="dialog">Map ↗</button><button id="sky-toggle" aria-pressed="false">Sky view</button><button id="view-toggle">First person</button><button id="run-toggle" aria-pressed="false">Run</button><button id="auto-toggle" aria-pressed="false">Walk on</button></div>
+          <div class="dog-controls figure-choice" role="group" aria-label="Walk as"><button data-figure="male" aria-pressed="true">Man</button><button data-figure="female" aria-pressed="false">Woman</button></div>
+          <div class="dog-controls sky-altitude" hidden><button data-altitude="1" aria-label="Fly higher">Higher ↑</button><button data-altitude="-1" aria-label="Fly lower">Lower ↓</button></div>
+          <div class="dog-controls"><button id="places-open" aria-haspopup="dialog" disabled>Places ↗</button><button id="dog-walk" aria-pressed="false">Walk with dog</button><button data-dog="pet">Pet the dog</button><button data-dog="call">Call the dog</button></div>
+          <p id="walk-status" role="status" hidden></p>
+          <div><button data-move="w" aria-label="Move forward">↑</button><button data-move="a" aria-label="Move left">←</button><button data-move="s" aria-label="Move backward">↓</button><button data-move="d" aria-label="Move right">→</button></div>
+        </div><div class="scene-controls">
+          <button id="explore-toggle" aria-pressed="false">Enter the forest ↗</button><button id="motion-toggle" aria-pressed="false">Pause scene</button>
+          <button id="sound-toggle" aria-pressed="false">Sound off</button>
+          <button id="reset-camera">Back to camp ↶</button>
+        </div>
+        <div class="scene-caption"><span class="caption-line"></span> A quiet place to explore what I've built.</div>
+        <a class="scroll-cue" href="#work">Selected work <span>↓</span></a>
+      </section>
+      <section class="work-section" id="work" aria-labelledby="work-heading">
+        <div class="section-heading"><p class="eyebrow">The work, up close</p><h2 id="work-heading">Built with intention.</h2><p>Four places to start. Each one has a different problem, a working implementation, and a story behind it.</p></div>
+        <div id="project-index" class="project-index"></div>
+        <noscript><p>Explore the source directly: <a href="https://github.com/infinity-009/VideoGen">VideoGen</a>, <a href="https://www.mallikarjunreddy.com/system-design/">System Design</a>, <a href="https://github.com/infinity-009/text2sql">Text-to-SQL</a>, <a href="https://github.com/infinity-009/edge_ai">Avatar tracking</a>.</p></noscript>
+        <div class="more-work"><span>Other explorations</span><a href="https://github.com/infinity-009/Amazon_ML" target="_blank" rel="noopener">Product pricing ↗</a><a href="https://github.com/infinity-009/Text_Summ_Finetuning-LLUMOAI" target="_blank" rel="noopener">Long-document summaries ↗</a><a href="https://github.com/infinity-009/chess-Bot" target="_blank" rel="noopener">Neural chess ↗</a></div>
+      </section>
+      <footer><p>Have something interesting in mind?<a href="mailto:hello@mallikarjunreddy.com">Let's talk.</a></p><div><span>Mallikarjun Reddy · 2026</span><a href="https://github.com/infinity-009" target="_blank" rel="noopener">GitHub ↗</a><a href="https://www.linkedin.com/in/infinity09/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="#home">Back to the clearing ↑</a></div></footer>
+    </main>
+    <dialog id="project-dialog" aria-labelledby="dialog-title"><button class="close-dialog" aria-label="Close project">Close <span>×</span></button><div id="dialog-content"></div></dialog>
+    <dialog id="places-dialog" aria-labelledby="places-title"><button id="places-close" class="close-dialog" aria-label="Close places">Close <span>×</span></button><p class="eyebrow">Beyond the clearing</p><h2 id="places-title">Paths through the valley.</h2><p>Choose a place to travel there, then explore on foot.</p><div id="places-list" class="places-list"></div></dialog>
+    <dialog id="map-dialog" class="map-dialog" aria-labelledby="map-title"><div class="map-head"><div><p class="eyebrow">The valley</p><h2 id="map-title">Where to?</h2></div><div class="map-tools"><button data-map="in" aria-label="Zoom in">+</button><button data-map="out" aria-label="Zoom out">−</button><button data-map="me">Find me</button><button data-map="close" class="close-dialog" aria-label="Close map">Close <span>×</span></button></div></div><div class="map-frame"><canvas tabindex="0" aria-label="Valley map. Click a spot to travel there; arrow keys pan, plus and minus zoom."></canvas><div class="map-pins"></div></div><p class="map-note" role="status"></p></dialog>
   </body>
 </html>
