@@ -20,14 +20,16 @@
   "supersample": 4,
   "side": "front (as the runtime pines)",
   "albedo": {
-    "file": "albedo.png",
+    "file": "albedo.webp",
     "encoding": "RGB: unlit base colour, sRGB-encoded (load as SRGBColorSpace, shader reads linear). A: true coverage (fraction of 16 supersamples hit; mips box-filtered, so coverage is preserved). Colours dilated into transparent texels.",
-    "bytes": 3697878
+    "bytes": 1308980,
+    "master": "albedo.png"
   },
   "normal": {
-    "file": "normal.png",
+    "file": "normal.webp",
     "encoding": "RGB: mean of the covered supersamples' tree-space unit normals * 0.5 + 0.5 (NoColorSpace), not renormalised: its length is the normals' coherence (1 = flat surface). Dilated.",
-    "bytes": 3210223
+    "bytes": 2242450,
+    "master": "normal.png"
   },
   "mips": [
     {
