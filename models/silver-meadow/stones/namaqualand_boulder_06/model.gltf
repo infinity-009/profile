@@ -1,0 +1,242 @@
+{
+  "asset": {
+    "generator": "glTF-Transform v4.5.1",
+    "version": "2.0"
+  },
+  "accessors": [
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 89988,
+      "normalized": false,
+      "byteOffset": 0,
+      "bufferView": 0
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 16185,
+      "max": [
+        0.3542558550834656,
+        0.6331791281700134,
+        0.5508024096488953
+      ],
+      "min": [
+        -0.3204590678215027,
+        -0.018452346324920654,
+        -0.6608133912086487
+      ],
+      "normalized": false,
+      "byteOffset": 0,
+      "bufferView": 1
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 16185,
+      "normalized": false,
+      "byteOffset": 0,
+      "bufferView": 2
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 16185,
+      "normalized": false,
+      "byteOffset": 0,
+      "bufferView": 3
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 179976,
+      "target": 34963,
+      "extensions": {
+        "EXT_meshopt_compression": {
+          "buffer": 0,
+          "byteOffset": 0,
+          "byteLength": 34992,
+          "mode": "TRIANGLES",
+          "byteStride": 2,
+          "count": 89988
+        }
+      }
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 179976,
+      "byteLength": 194220,
+      "target": 34962,
+      "byteStride": 12,
+      "extensions": {
+        "EXT_meshopt_compression": {
+          "buffer": 0,
+          "byteOffset": 34992,
+          "byteLength": 140219,
+          "mode": "ATTRIBUTES",
+          "byteStride": 12,
+          "count": 16185
+        }
+      }
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 374196,
+      "byteLength": 194220,
+      "target": 34962,
+      "byteStride": 12,
+      "extensions": {
+        "EXT_meshopt_compression": {
+          "buffer": 0,
+          "byteOffset": 175212,
+          "byteLength": 167275,
+          "mode": "ATTRIBUTES",
+          "byteStride": 12,
+          "count": 16185
+        }
+      }
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 568416,
+      "byteLength": 129480,
+      "target": 34962,
+      "byteStride": 8,
+      "extensions": {
+        "EXT_meshopt_compression": {
+          "buffer": 0,
+          "byteOffset": 342488,
+          "byteLength": 86733,
+          "mode": "ATTRIBUTES",
+          "byteStride": 8,
+          "count": 16185
+        }
+      }
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 1
+        }
+      }
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 0
+        }
+      }
+    },
+    {
+      "sampler": 0,
+      "extensions": {
+        "EXT_texture_webp": {
+          "source": 2
+        }
+      }
+    }
+  ],
+  "images": [
+    {
+      "name": "namaqualand_boulder_06_nor_gl",
+      "mimeType": "image/webp",
+      "uri": "textures/namaqualand_boulder_06_nor_gl_2k.webp"
+    },
+    {
+      "name": "namaqualand_boulder_06_diff",
+      "mimeType": "image/webp",
+      "uri": "textures/namaqualand_boulder_06_diff_2k.webp"
+    },
+    {
+      "name": "namaqualand_boulder_06_rough",
+      "mimeType": "image/webp",
+      "uri": "textures/namaqualand_boulder_06_arm_2k.webp"
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "geometry.bin",
+      "byteLength": 429224
+    },
+    {
+      "byteLength": 697896,
+      "extensions": {
+        "EXT_meshopt_compression": {
+          "fallback": true
+        }
+      }
+    }
+  ],
+  "materials": [
+    {
+      "name": "namaqualand_boulder_06",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0,
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      },
+      "normalTexture": {
+        "index": 1
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "mesh_boulder_01_5m",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "TEXCOORD_0": 3
+          },
+          "mode": 4,
+          "material": 0,
+          "indices": 0
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "namaqualand_boulder_06",
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0,
+  "extensionsUsed": [
+    "EXT_meshopt_compression",
+    "EXT_texture_webp"
+  ],
+  "extensionsRequired": [
+    "EXT_meshopt_compression",
+    "EXT_texture_webp"
+  ]
+}

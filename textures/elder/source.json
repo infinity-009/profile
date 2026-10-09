@@ -1,0 +1,7 @@
+{
+  "license": "CC0-1.0 (no attribution required; listed for provenance)",
+  "maps": [
+    { "name": "bark013_{diff,nor_gl,rough}_1k.jpg", "asset": "Bark013 (2K JPG, downscaled to 1k)", "source": "https://ambientcg.com/view?id=Bark013" },
+    { "name": "hessian_230_{diff,nor_gl,rough}_1k.jpg", "asset": "hessian_230 (2k, downscaled; rough is the arm map, roughness in green)", "authors": "colormass (photography), Rico Cilliers (processing)", "source": "https://polyhaven.com/a/hessian_230" }
+  ]
+}
