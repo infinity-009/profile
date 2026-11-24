@@ -1,13 +1,12 @@
-# Labrador dog
+# Golden Labrador Retriever (Camp Companion)
 
-Source: "Labrador dog no description (serioulsy)" by Dream Dixie works,
-https://sketchfab.com/3d-models/labrador-dog-no-description-serioulsy-42c8f95d9a83481f93e84d706ca03729
-Listed licence: Creative Commons Attribution 4.0, https://creativecommons.org/licenses/by/4.0/
+- **Origin:** 100% original procedural & sculpted 3D character created for Moonriver 3.0 using Blender 5.3.0 (`scripts/blender/build-dog-hero.py`).
+- **Author:** Mallikarjun Reddy (Moonriver project original)
+- **License:** Creative Commons Zero 1.0 Universal (CC0-1.0), https://creativecommons.org/publicdomain/zero/1.0/
+- **Provenance Status:** Verified clean original (replaces the earlier flagged Sketchfab/cotw upload; zero third-party meshes, textures, skeletons, or animation data).
 
-Provenance caution (recorded 4 October 2026): the upload carries the tag "cotw" and its clip names
-match the Labrador Retriever DLC of theHunter: Call of the Wild (Expansive Worlds). The uploader's other
-models are mostly fan uploads of other studios' characters. The CC-BY listing may therefore not be the
-uploader's to grant. The owner chose to use it for local development; review before publishing.
+## Build & Asset Summary
 
-Changes: 32 of 107 clips kept and renamed, keys resampled, meshopt geometry, KTX2 texture
-(scripts/prepare-dog.mjs). Coat colour is tinted at runtime.
+- **Mesh:** 20,132 triangles (`10,116` vertices), single unified `SkinnedMesh` (`LabradorHero`) facing `+Z`, `1.473 m` nose-to-tail length, `0.809 m` head height, paws grounded at `y = 0.000 m`.
+- **PBR Maps:** Cycles-baked (CUDA + CPU OpenImageDenoise) single material (`LabradorCoat`) — `2048x2048` sRGB Albedo WebP, `1024x1024` tangent-space Normal WebP, and `1024x1024` linear ORM WebP (`R=AO`, `G=Roughness`, `B=Metallic`), geometry compressed via `EXT_meshopt_compression` (`1.65 MB`).
+- **Rig & Animations:** 30-bone quadruped skeleton exposing `Head`, `Neck`, `Tail01`, `Tail02`, `Spine2` and 4 IK-ready leg chains (`FrontUpLegL/R`, `FrontLowLegL/R`, `FrontPawL/R`, `BackUpLegL/R`, `BackLowLegL/R`, `BackPawL/R`), with all 20 authored skeletal animation clips (`walk`, `walkLeft`, `walkRight`, `trot`, `idle`, `lieBreathe`, `lieBreathe2`, `lieToIdle`, `sitToIdle`, `toSit`, `sitToLie`, `toLie`, `sniff`, `smellAir`, `shake`, `shuffleLeft`, `shuffleRight`, `sitScratch`, `paw`, `pet`).

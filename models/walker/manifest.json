@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "generator": "scripts/blender/upgrade-walker-rigs.py",
+  "requiredTraversalClips": [
+    "idle",
+    "walk",
+    "run",
+    "sprint",
+    "crouchIdle",
+    "crouchWalk",
+    "jump",
+    "fall",
+    "land",
+    "climb",
+    "swim",
+    "row"
+  ],
+  "legacyClips": [
+    "idle",
+    "walk",
+    "jog"
+  ],
+  "sockets": [
+    "RightHandSocket",
+    "LeftHandSocket",
+    "BackSocket"
+  ],
+  "rigs": {
+    "male": {
+      "id": "male",
+      "provenance": "Microsoft Rocketbox Avatar Library (Male_Adult_08, MIT License)",
+      "forwardAxis": "+Z",
+      "upAxis": "+Y",
+      "heightMeters": 1.8219,
+      "hipHeightMeters": 0.8952,
+      "legLengthsMeters": {
+        "upper": 0.399,
+        "lower": 0.3967,
+        "footHeight": 0.1026
+      },
+      "files": {
+        "lod0": "male.glb",
+        "lod1": "male-lod1.glb"
+      },
+      "lod0": {
+        "file": "male.glb",
+        "bytes": 1466544,
+        "triangles": 7364,
+        "meshes": 1,
+        "textures": 5,
+        "joints": 83
+      },
+      "lod1": {
+        "file": "male-lod1.glb",
+        "bytes": 671548,
+        "triangles": 2882,
+        "triangleRatio": 0.3914,
+        "meshes": 1,
+        "textures": 5,
+        "joints": 83
+      },
+      "bones": {
+        "hips": "Bip01_Pelvis",
+        "spine": "Bip01_Spine",
+        "spineMid": "Bip01_Spine1",
+        "chest": "Bip01_Spine2",
+        "neck": "Bip01_Neck",
+        "head": "Bip01_Head",
+        "leftClavicle": "Bip01_L_Clavicle",
+        "leftUpperArm": "Bip01_L_UpperArm",
+        "leftLowerArm": "Bip01_L_Forearm",
+        "leftHand": "Bip01_L_Hand",
+        "rightClavicle": "Bip01_R_Clavicle",
+        "rightUpperArm": "Bip01_R_UpperArm",
+        "rightLowerArm": "Bip01_R_Forearm",
+        "rightHand": "Bip01_R_Hand",
+        "leftUpLeg": "Bip01_L_Thigh",
+        "leftLeg": "Bip01_L_Calf",
+        "leftFoot": "Bip01_L_Foot",
+        "leftToe": "Bip01_L_Toe0",
+        "rightUpLeg": "Bip01_R_Thigh",
+        "rightLeg": "Bip01_R_Calf",
+        "rightFoot": "Bip01_R_Foot",
+        "rightToe": "Bip01_R_Toe0",
+        "rightHandSocket": "RightHandSocket",
+        "leftHandSocket": "LeftHandSocket",
+        "backSocket": "BackSocket",
+        "root": "Bip01"
+      },
+      "socketOffsets": {
+        "RightHandSocket": {
+          "parent": "Bip01_R_Hand",
+          "purpose": "lantern/oar/telescope",
+          "neutralWorldPos": [
+            -0.2822,
+            0.8334,
+            0.1027
+          ]
+        },
+        "LeftHandSocket": {
+          "parent": "Bip01_L_Hand",
+          "purpose": "oar/offhand",
+          "neutralWorldPos": [
+            0.2822,
+            0.8334,
+            0.1027
+          ]
+        },
+        "BackSocket": {
+          "parent": "Bip01_Spine2",
+          "purpose": "Crown Ridge hang-glider pack",
+          "neutralWorldPos": [
+            -0.0,
+            1.3762,
+            -0.1507
+          ]
+        }
+      },
+      "clips": {
+        "climb": {
+          "duration": 1.1667,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 1.1
+        },
+        "crouchIdle": {
+          "duration": 2.0,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 0.0
+        },
+        "crouchWalk": {
+          "duration": 1.0,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 1.45
+        },
+        "fall": {
+          "duration": 0.75,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 0.0
+        },
+        "idle": {
+          "duration": 11.6667,
+          "loop": true,
+          "source": "original",
+          "speedMetersPerSec": 0.0
+        },
+        "jog": {
+          "duration": 0.6,
+          "loop": true,
+          "source": "original",
+          "speedMetersPerSec": 5.839
+        },
+        "jump": {
+          "duration": 0.5833,
+          "loop": false,
+          "source": "authored",
+          "speedMetersPerSec": 0.0
+        },
+        "land": {
+          "duration": 0.5833,
+          "loop": false,
+          "source": "authored",
+          "speedMetersPerSec": 0.0
+        },
+        "row": {
+          "duration": 1.3333,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 2.4
+        },
+        "run": {
+          "duration": 0.75,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 4.6
+        },
+        "sprint": {
+          "duration": 0.5833,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 7.4
+        },
+        "swim": {
+          "duration": 1.1667,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 1.9
+        },
+        "walk": {
+          "duration": 1.2,
+          "loop": true,
+          "source": "original",
+          "speedMetersPerSec": 1.012
+        }
+      }
+    },
+    "female": {
+      "id": "female",
+      "provenance": "Quaternius Modular Character Outfits / Universal Base / Animation Library (CC0-1.0)",
+      "forwardAxis": "+Z",
+      "upAxis": "+Y",
+      "heightMeters": 1.7711,
+      "hipHeightMeters": 0.9318,
+      "legLengthsMeters": {
+        "upper": 0.4099,
+        "lower": 0.4661,
+        "footHeight": 0.0951
+      },
+      "files": {
+        "lod0": "female.glb",
+        "lod1": "female-lod1.glb"
+      },
+      "lod0": {
+        "file": "female.glb",
+        "bytes": 1586600,
+        "triangles": 31628,
+        "meshes": 11,
+        "textures": 13,
+        "joints": 68
+      },
+      "lod1": {
+        "file": "female-lod1.glb",
+        "bytes": 845532,
+        "triangles": 12138,
+        "triangleRatio": 0.3838,
+        "meshes": 11,
+        "textures": 13,
+        "joints": 68
+      },
+      "bones": {
+        "hips": "pelvis",
+        "spine": "spine_01",
+        "spineMid": "spine_02",
+        "chest": "spine_03",
+        "neck": "neck_01",
+        "head": "Head",
+        "leftClavicle": "clavicle_l",
+        "leftUpperArm": "upperarm_l",
+        "leftLowerArm": "lowerarm_l",
+        "leftHand": "hand_l",
+        "rightClavicle": "clavicle_r",
+        "rightUpperArm": "upperarm_r",
+        "rightLowerArm": "lowerarm_r",
+        "rightHand": "hand_r",
+        "leftUpLeg": "thigh_l",
+        "leftLeg": "calf_l",
+        "leftFoot": "foot_l",
+        "leftToe": "ball_l",
+        "rightUpLeg": "thigh_r",
+        "rightLeg": "calf_r",
+        "rightFoot": "foot_r",
+        "rightToe": "ball_r",
+        "rightHandSocket": "RightHandSocket",
+        "leftHandSocket": "LeftHandSocket",
+        "backSocket": "BackSocket",
+        "root": "root"
+      },
+      "socketOffsets": {
+        "RightHandSocket": {
+          "parent": "hand_r",
+          "purpose": "lantern/oar/telescope",
+          "neutralWorldPos": [
+            -0.2504,
+            0.8802,
+            -0.0449
+          ]
+        },
+        "LeftHandSocket": {
+          "parent": "hand_l",
+          "purpose": "oar/offhand",
+          "neutralWorldPos": [
+            0.2504,
+            0.8802,
+            -0.0449
+          ]
+        },
+        "BackSocket": {
+          "parent": "spine_03",
+          "purpose": "Crown Ridge hang-glider pack",
+          "neutralWorldPos": [
+            -0.0,
+            1.3456,
+            -0.15
+          ]
+        }
+      },
+      "clips": {
+        "climb": {
+          "duration": 1.1667,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 1.1
+        },
+        "crouchIdle": {
+          "duration": 2.0,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 0.0
+        },
+        "crouchWalk": {
+          "duration": 1.0,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 1.45
+        },
+        "fall": {
+          "duration": 0.75,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 0.0
+        },
+        "idle": {
+          "duration": 2.5,
+          "loop": true,
+          "source": "original",
+          "speedMetersPerSec": 0.0
+        },
+        "jog": {
+          "duration": 0.9333,
+          "loop": true,
+          "source": "original",
+          "speedMetersPerSec": 5.5
+        },
+        "jump": {
+          "duration": 0.5833,
+          "loop": false,
+          "source": "authored",
+          "speedMetersPerSec": 0.0
+        },
+        "land": {
+          "duration": 0.5833,
+          "loop": false,
+          "source": "authored",
+          "speedMetersPerSec": 0.0
+        },
+        "row": {
+          "duration": 1.3333,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 2.4
+        },
+        "run": {
+          "duration": 0.75,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 4.6
+        },
+        "sprint": {
+          "duration": 0.5833,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 7.4
+        },
+        "swim": {
+          "duration": 1.1667,
+          "loop": true,
+          "source": "authored",
+          "speedMetersPerSec": 1.9
+        },
+        "walk": {
+          "duration": 1.3333,
+          "loop": true,
+          "source": "original",
+          "speedMetersPerSec": 1.0
+        }
+      }
+    }
+  }
+}
