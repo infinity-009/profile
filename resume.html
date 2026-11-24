@@ -1,9 +1,121 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mallikarjun Reddy — Résumé</title><link rel="icon" href="data:,"><style>body{max-width:800px;margin:60px auto;padding:0 25px;color:#25332c;background:#f6f2e9;font:15px/1.65 system-ui,sans-serif}h1,h2{font-family:Georgia,serif;font-weight:400}h1{font-size:43px;margin-bottom:0}h2{font-size:25px;border-bottom:1px solid #c8cabe;padding-bottom:7px;margin-top:35px}h3{margin:18px 0 2px}a{color:inherit}small{color:#58665d}ul{padding-left:20px;margin:6px 0}li{margin:4px 0}.links{display:flex;gap:20px;flex-wrap:wrap}.pdf{display:inline-block;padding:10px 15px;margin-top:22px;background:#243c30;color:#fff;text-decoration:none}@media print{body{margin:0;background:white;font-size:11px}.pdf,.back{display:none}h1{font-size:32px}h2{margin-top:20px;font-size:20px}}</style><script data-goatcounter="https://mallikarjun.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script></head><body><a class="back" href="/">← Back to the clearing</a><h1>Mallikarjun Reddy</h1><p>GenAI / AI Engineer · Bengaluru</p><div class="links"><a href="mailto:hello@mallikarjunreddy.com">hello@mallikarjunreddy.com</a><a href="https://www.linkedin.com/in/infinity09/">LinkedIn</a><a href="https://github.com/infinity-009">GitHub</a></div><a class="pdf" data-goatcounter-click="resume-pdf-page" href="/Mallikarjun_Reddy_Resume.pdf" download="resume.pdf">Download PDF ↓</a>
-<h2>Summary</h2><p>GenAI and Systems Engineer specializing in orchestrating Large Language Models (LLMs), deterministic state graphs via LangGraph, and scalable multi-modal AI architectures. Proven track record of architecture and end-to-end deployment of enterprise-grade RAG pipelines, fine-tuning state-of-the-art models (Claude, Llama) using LoRA/PEFT, and building highly-concurrent ML microservices. Adept at bridging bleeding-edge AI research with production-grade engineering using Claude Code for agentic pair programming to build programmatic systems.</p>
-<h2>Education</h2><h3>Indian Institute of Technology (IIT) Roorkee</h3><small>Bachelor of Technology · 2019 – 2023 · Roorkee, India</small><p>CGPA 7.4/10 · JEE Advanced rank 3015</p>
-<h2>Experience</h2><h3>Kredily — Senior GenAI & AI Systems Engineer</h3><small>Jun. 2026 – Present · Bengaluru</small><ul><li>Built GenAI and RAG workflows for HR and payroll intelligence, enabling natural-language queries and automated reporting.</li><li>Improved services handling roughly 20M requests/day, reducing evening peak compute demand by about 40% through caching and read-query optimization.</li><li>Rolled out Attendance Regularisation V2 and the Payroll Arrears engine to all customers; strengthened Celery task and cloud workload reliability.</li></ul>
-<h3>Isourse Technologies — AI/ML Engineer</h3><small>Aug. 2024 – May 2026 · Dwarka, New Delhi</small><ul><li><strong>LLM fine-tuning & deployment:</strong> Finetuned and deployed state-of-the-art open-source LLMs (Llama 3, Qwen, DeepSeek) using SFT, PEFT, and LoRA to architect a robust Text-to-SQL conversational BI platform (using Pydantic), completely automating enterprise dashboard generation.</li><li><strong>Agentic RAG systems:</strong> Developed a scalable RAG-based AI chatbot orchestrated with persistent agentic memory and vector stores (Milvus/pgvector), drastically improving contextual accuracy and driving a massive boost in user retention.</li><li><strong>AI-powered ATS:</strong> Engineered an Intelligent ATS system leveraging custom vector embeddings and semantic similarity, automating candidate evaluation and achieving near-human logical scoring accuracy at high latency efficiency.</li><li><strong>High-volume data engineering:</strong> Built and orchestrated a fault-tolerant, real-time data warehousing ETL pipeline (APIs → Kafka → PySpark) capable of seamlessly processing ultra-high-volume distributed data streams.</li><li><strong>MLOps & infrastructure:</strong> Spearheaded the migration of legacy ML infrastructure to highly concurrent, Dockerized FastAPI microservices, implementing cluster observability and alerting via Grafana and Prometheus.</li></ul>
-<h2>Relevant projects</h2><h3><a href="https://zenvidio.com">ZENVidio</a></h3><small>LangGraph, MCP, Claude, FastAPI, Next.js</small><ul><li><strong>End-to-end multi-agent architecture:</strong> Architected an autonomous video platform via LangGraph state graphs and MCP tool calls to generate Remotion code.</li><li><strong>Vision AI feedback loop & scalable render engine:</strong> Developed an “Agentic Mastery Loop” using PIL/Vision AI to auto-critique visual layouts and autonomously rewrite .tsx files, concurrently bridging Python AI backends with a Chrome/Puppeteer pipeline.</li></ul>
-<h3><a href="https://github.com/infinity-009/edge_ai">3D Avatar Motion Capture</a></h3><small>MediaPipe, Three.js, WebGL</small><ul><li><strong>Browser-based inference:</strong> Architected an ultra-low latency, real-time 3D avatar system using MediaPipe for perfect alignment of full-body, hand, and complex facial mappings strictly via webcams.</li></ul>
-<h3>Enterprise GenAI Chatbot</h3><small>Gemini 2.0, Llama 3.1, FastRTC, RAG</small><ul><li><strong>Multi-modal discovery:</strong> Spearheaded a corporate AI assistant leveraging hybrid search (semantic + exact match) with Milvus and real-time bi-directional FastRTC voice capabilities to accelerate big-data extraction.</li></ul>
-<h2>Technical skills</h2><p><strong>Generative AI & ML:</strong> LLMs (Claude/GPT/Llama), LangGraph, Agentic Workflows, Text-to-SQL, Multi-Modal AI, LoRA, Vector Search (Milvus/pgvector)<br><strong>Languages & frameworks:</strong> Python, SQL, FastAPI, Pydantic, PyTorch, TensorFlow, LangChain, LlamaIndex, Node.js, React<br><strong>Data & cloud:</strong> Kafka, PySpark, PostgreSQL, Snowflake, Azure AI Foundry, GCP, AWS, Docker, Kubernetes<br><strong>Developer tools:</strong> Claude Code, Model Context Protocol (MCP), Git, CI/CD, ONNX, Grafana, Prometheus</p></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mallikarjun Reddy — Résumé</title>
+  <link rel="icon" href="data:," />
+  <style>
+    body{max-width:800px;margin:60px auto;padding:0 25px 48px;color:#25332c;background:#f6f2e9;font:15px/1.65 system-ui,-apple-system,sans-serif}
+    h1,h2{font-family:Georgia,serif;font-weight:400}
+    h1{font-size:43px;margin:14px 0 4px;line-height:1.1}
+    h2{font-size:25px;border-bottom:1px solid #c8cabe;padding-bottom:7px;margin-top:36px}
+    h3{margin:20px 0 2px;font-size:17px}
+    a{color:inherit}
+    small{color:#58665d}
+    ul{padding-left:20px;margin:8px 0}
+    li{margin:5px 0}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;background:#e9e4d7;padding:1px 4px;border-radius:3px}
+    .subtitle{margin:0 0 12px;color:#3d4d44;font-size:16px}
+    .links{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+    .edu-line{margin:10px 0 0;font-size:14px;color:#4a5950}
+    .pdf{display:inline-block;padding:10px 16px;margin-top:22px;background:#243c30;color:#fff;text-decoration:none;border-radius:3px;font-size:14px}
+    .pdf:hover{background:#1b2f25}
+    .meta{display:block;margin-bottom:6px;font-size:13px;color:#58665d}
+    .stack{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 8px}
+    .stack span{font-size:12px;line-height:1.2;padding:3px 8px;border-radius:3px;background:#e9e4d7;color:#2f4037}
+    .proj-links{font-size:13px;font-weight:400;margin-left:8px;color:#4a5950}
+    .proj-links a{margin-left:8px}
+    .skills p{margin:6px 0}
+    @media print{
+      body{margin:0;padding:0;background:#fff;font-size:11px;line-height:1.45}
+      .pdf,.back{display:none}
+      h1{font-size:30px;margin-top:0}
+      h2{margin-top:18px;font-size:18px}
+      .stack span{background:#f0f0f0}
+    }
+  </style>
+  <script data-goatcounter="https://mallikarjun.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body>
+  <a class="back" href="/">← Back to the clearing</a>
+  <header>
+    <h1>Mallikarjun Reddy</h1>
+    <p class="subtitle">Backend &amp; AI Engineer · Bengaluru</p>
+    <div class="links">
+      <a href="mailto:hello@mallikarjunreddy.com">hello@mallikarjunreddy.com</a>
+      <a href="https://www.linkedin.com/in/infinity09/" target="_blank" rel="noopener">linkedin.com/in/infinity09</a>
+      <a href="https://github.com/infinity-009" target="_blank" rel="noopener">github.com/infinity-009</a>
+      <a href="https://www.mallikarjunreddy.com">mallikarjunreddy.com</a>
+    </div>
+    <p class="edu-line"><strong>Indian Institute of Technology (IIT) Roorkee</strong> · B.Tech, 2019 – 2023 · CGPA 7.4/10 · JEE Advanced AIR 3015</p>
+    <a class="pdf" data-goatcounter-click="resume-pdf-page" href="/Mallikarjun_Reddy_Resume.pdf" download="resume.pdf">Download PDF ↓</a>
+  </header>
+
+  <main>
+    <h2>Summary</h2>
+    <p>Backend and AI engineer who makes production systems <strong>faster and harder to break</strong>. Currently on the Django, Celery, Redis and PostgreSQL core of Kredily's <strong>multi-tenant payroll and HR platform</strong>. Builds <strong>LLM systems from first principles</strong>: tool-calling agents on native model SDKs, MCP servers, and vision-model loops that check and repair generated code.</p>
+
+    <h2>Experience</h2>
+
+    <h3>Kredily — AI Engineer, SDE II</h3>
+    <small class="meta">Bengaluru · Jun 2026 – Present</small>
+    <div class="stack">
+      <span>Python</span><span>Django</span><span>PostgreSQL</span><span>Redis</span><span>Celery</span><span>RabbitMQ</span><span>GKE</span><span>Cloud Build</span><span>Docker</span><span>LLM SDKs</span><span>MCP</span>
+    </div>
+    <ul>
+      <li><strong>Cut database load on the busiest request paths</strong> (clock-in, biometric punch sync, leave and payroll pages): cached schedules, fast-path and index-friendly lookups, N+1 queries removed, and analytics writes batched into bulk upserts.</li>
+      <li><strong>Made scheduled jobs run once, on time.</strong> Fixed recurring Celery failures (dropped DB connections, duplicate runs from two beat schedulers, silently discarded tasks, delays outliving the broker's ack timeout) and moved heavy syncs to their own queue.</li>
+      <li><strong>Stopped Redis from stalling the app</strong> by replacing blocking <code>KEYS</code> scans with <code>SCAN</code> and versioned keys, adding client timeouts and slow-call logging, and fixing cache invalidation that served stale settings.</li>
+      <li><strong>Rebuilt payroll engines to finish instead of time out:</strong> leave accrual as chunked per-employee batches, attendance regularisation as a bulk engine rolled out company by company, and a retroactive arrears engine that folds PF and ESI into statutory filings.</li>
+      <li><strong>Made third-party integrations safe to change:</strong> ordered, retrying Celery chains for the labour-compliance sync, de-duplicated biometric punches, and a bank-payout test harness that replays recorded bank replies and rolls back every write, so tests never touch live banking.</li>
+      <li><strong>Faster, safer deploys:</strong> Cloud Build pipelines with cached Docker layers, a pre-deploy migration check and rollout health checks; removed public source maps as part of the cloud cost reduction drive.</li>
+      <li><strong>Contributed to Kai</strong>, Kredily's agentic HR assistant (native LLM SDKs, MCP): tenant-scoped data access, rate limiting and its deploy pipeline.</li>
+    </ul>
+
+    <h3>Isourse Technologies — AI/ML Engineer</h3>
+    <small class="meta">New Delhi · Aug 2024 – May 2026</small>
+    <div class="stack">
+      <span>Python</span><span>FastAPI</span><span>PyTorch</span><span>Hugging Face</span><span>vLLM</span><span>LoRA / PEFT</span><span>YOLO</span><span>FaceNet</span><span>OCR</span><span>Kafka</span><span>PySpark</span><span>Docker</span><span>Grafana</span>
+    </div>
+    <ul>
+      <li><strong>Core engineer on a conversational BI platform</strong> where quick-commerce and logistics teams ask their SQL data questions in plain English and get charts back: schema selection, key and join detection, read-only query guardrails and memory of approved queries.</li>
+      <li><strong>Fine-tuned open-weight LLMs</strong> (Llama, Qwen, DeepSeek) with SFT and LoRA/PEFT for text-to-SQL and chat, judging generated SQL by the rows it returns rather than how it reads, and served the models in Docker on GPU servers.</li>
+      <li><strong>Automated ID checks for gig-worker onboarding:</strong> YOLO models that find the fields on Aadhaar, PAN, driving-licence, voter-ID and vehicle documents before OCR, FaceNet face matching, and synthetic images to train both.</li>
+      <li><strong>Shipped RAG and hiring tools:</strong> a support chatbot with persistent memory, and a resume screener that ranks candidates against job descriptions by semantic match and skill gaps.</li>
+      <li><strong>Moved ML services onto production footing:</strong> from Windows services to Docker on Linux with Prometheus and Grafana monitoring; contributed to a Kafka and PySpark pipeline streaming shipment data.</li>
+    </ul>
+
+    <h2>Projects</h2>
+
+    <h3>ZENVidio — Multi-agent code-to-video engine<span class="proj-links"><a href="https://zenvidio.com/" target="_blank" rel="noopener">zenvidio.com ↗</a><a href="https://github.com/infinity-009/VideoGen" target="_blank" rel="noopener">GitHub ↗</a></span></h3>
+    <div class="stack">
+      <span>Gemini SDK</span><span>Remotion (React / TSX)</span><span>Cloud TTS</span><span>Headless Chromium</span><span>FFmpeg</span><span>FastAPI</span><span>PostgreSQL</span><span>Next.js</span>
+    </div>
+    <ul>
+      <li><strong>Turns a one-line topic into a narrated explainer video</strong> with agents on the native Gemini SDK: a Director writes to a speech-rate budget, a Storyboarder emits Pydantic-validated scene specs, asset agents draw SVGs and a Scene Builder codes each scene in Remotion.</li>
+      <li><strong>Catches broken code before it costs a render:</strong> static checks auto-fix common TSX mistakes (imports, exports, asset paths), and failed renders retry with the compiler error fed back to the model.</li>
+      <li><strong>Lets the model see its own output:</strong> Gemini Vision grades headless-Chromium frame grids against a layout, typography and clipping rubric, and weak scenes are rewritten from the critique using stills, never full renders.</li>
+      <li><strong>Keeps picture and voice in sync</strong> by sizing each scene from its synthesised voice-over, on a FastAPI backend with bounded worker pools, model failover with rate-limit backoff, and FFmpeg assembly.</li>
+    </ul>
+
+    <h3>Agent Harness — Guardrails for AI coding agents</h3>
+    <small class="meta">Python · MCP SDK · SQLite FTS5</small>
+    <ul>
+      <li><strong>Stops AI coding agents shipping silent production bugs:</strong> a CLI and MCP server for Claude Code, Codex and Cursor whose pre-commit checks flag risky transaction, cache and queue changes, with verified test-run logs, a scoped memory vault and chat search.</li>
+    </ul>
+
+    <h2>Education</h2>
+    <h3>Indian Institute of Technology (IIT) Roorkee</h3>
+    <small class="meta">Bachelor of Technology · 2019 – 2023 · Roorkee, India</small>
+    <p>CGPA 7.4/10 · JEE Advanced AIR 3015</p>
+
+    <h2>Skills</h2>
+    <div class="skills">
+      <p><strong>Backend &amp; infra:</strong> Python, SQL, Django, FastAPI, PostgreSQL, Redis, Celery, RabbitMQ, Kafka, PySpark, Docker, GKE, GCP, Cloud Build, Grafana</p>
+      <p><strong>AI / ML:</strong> agent loops, tool calling, MCP, prompt caching, RAG, LLM evals, SFT, LoRA/PEFT, vLLM, PyTorch, Hugging Face, YOLO, FaceNet</p>
+      <p><strong>Frontend &amp; media:</strong> TypeScript, React, Next.js, Remotion, FFmpeg</p>
+    </div>
+  </main>
+</body>
+</html>
